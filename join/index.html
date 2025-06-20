@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Rotary Bengaluru Heritage North</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .handout {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #d4af37 0%, #f7e98e 100%);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .logo-section {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .rotary-wheel {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: #1e3c72;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 8s linear infinite;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .rotary-wheel::before {
+            content: '⚙';
+            font-size: 40px;
+            color: #d4af37;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .header .tagline {
+            font-size: 1.1em;
+            color: #2a5298;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .motto {
+            background: rgba(30, 60, 114, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            color: #1e3c72;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #d4af37;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #1e3c72;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            font-size: 1.3em;
+            color: #d4af37;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .project-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #2a5298;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .project-card h4 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .project-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .member-profiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .profile-tag {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .profile-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(42, 82, 152, 0.3);
+        }
+        
+        .activities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .activity-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .activity-item:hover {
+            border-color: #d4af37;
+            transform: translateY(-2px);
+        }
+        
+        .activity-item h4 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            margin: 0 -30px -40px -30px;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+        
+        .cta-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            align-items: center;
+            margin-top: 25px;
+        }
+        
+        .cta-text {
+            text-align: left;
+        }
+        
+        .cta-text p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .qr-section {
+            text-align: center;
+        }
+        
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-size: 3em;
+            color: #1e3c72;
+        }
+        
+        .join-button {
+            background: linear-gradient(135deg, #d4af37, #f7e98e);
+            color: #1e3c72;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .join-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .handout {
+                margin: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .cta-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .cta-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="handout">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="rotary-wheel"></div>
+                <h1>ROTARY BENGALURU HERITAGE NORTH</h1>
+                <p class="tagline">Where Heritage Meets Service</p>
+                <div class="motto">"Service Above Self"</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Section 1: Key Projects and Impact -->
+            <div class="section">
+                <h2><span class="section-icon">🌟</span>Our Impact & Projects</h2>
+                <p>Making a difference through meaningful service across local, district, and international initiatives:</p>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4>🏥 Polio Eradication</h4>
+                        <p>Part of Rotary International's historic campaign that has reduced polio cases by 99.9% worldwide</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>💧 Water Works Projects</h4>
+                        <p>District 3192: 200+ units providing clean water access to rural communities across Karnataka</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>📚 Schools & Skill Centers</h4>
+                        <p>District 3192: 25+ schools supported, 50+ skill development centers established for vocational training</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>🩺 Blood Units & Health</h4>
+                        <p>District 3192: 1000+ blood units collected annually, supporting emergency medical needs</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>🏥 Cataract Surgeries</h4>
+                        <p>District 3192: 500+ sight-restoring surgeries performed, bringing vision back to communities</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>🚑 Ambulance Services</h4>
+                        <p>District 3192: 75+ ambulances deployed for emergency medical transportation in rural areas</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>🏛️ Heritage Conservation</h4>
+                        <p>Preserving Bengaluru's rich cultural heritage through restoration and awareness programs</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>🏠 Hospice & Shelter Homes</h4>
+                        <p>District 3192: 8+ hospice facilities providing dignified care and shelter for the vulnerable</p>
+                    </div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1.4M+</div>
+                        <div class="stat-label">Rotarians Worldwide</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Water Works (D3192)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Blood Units (D3192)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Cataract Surgeries</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: About Rotary & Our Club -->
+            <div class="section">
+                <h2><span class="section-icon">🤝</span>About Rotary & Our Club</h2>
+                <p>Rotary is a global network of community volunteers who take action to create lasting change. Our club represents the vibrant heritage and dynamic spirit of North Bengaluru, bringing together professionals from diverse backgrounds united by our commitment to service.</p>
+                
+                <h3 style="color: #1e3c72; margin: 20px 0 15px 0;">Our Diverse Membership</h3>
+                <div class="member-profiles">
+                    <div class="profile-tag">Business Leaders</div>
+                    <div class="profile-tag">Healthcare Professionals</div>
+                    <div class="profile-tag">Engineers & Tech</div>
+                    <div class="profile-tag">Educators</div>
+                    <div class="profile-tag">Legal Experts</div>
+                    <div class="profile-tag">Financial Services</div>
+                    <div class="profile-tag">Entrepreneurs</div>
+                    <div class="profile-tag">Social Workers</div>
+                    <div class="profile-tag">Artists & Creatives</div>
+                    <div class="profile-tag">Government Officials</div>
+                    <div class="profile-tag">Media Professionals</div>
+                    <div class="profile-tag">Consultants</div>
+                </div>
+                
+                <p style="margin-top: 20px; font-style: italic; color: #666;">Each member brings unique expertise and perspective, creating a powerful network for positive change in our community.</p>
+            </div>
+
+            <!-- Section 3: Activities & Fellowship -->
+            <div class="section">
+                <h2><span class="section-icon">🎯</span>Engaging Activities & Fellowship</h2>
+                <p>Beyond service, we foster meaningful connections through diverse activities that enrich both personal and professional lives:</p>
+                
+                <div class="activities-list">
+                    <div class="activity-item">
+                        <h4>🍽️ Weekly Fellowship Meetings</h4>
+                        <p>Every Thursday at premium venues across North Bengaluru, featuring inspiring speakers and networking opportunities</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🏌️ Sports & Recreation Groups</h4>
+                        <p>Golf outings, cricket matches, badminton tournaments, and outdoor adventure activities</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🎭 Cultural & Heritage Tours</h4>
+                        <p>Exploring Bengaluru's rich history, art exhibitions, theater performances, and cultural festivals</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>👨‍👩‍👧‍👦 Family-Friendly Events</h4>
+                        <p>Annual picnics, celebration dinners, children's activities, and spouse fellowship programs</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🌐 Professional Development</h4>
+                        <p>Industry expert talks, skill-building workshops, leadership training, and business networking sessions</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🎉 Special Interest Groups</h4>
+                        <p>Photography club, book reading circles, food appreciation groups, and travel fellowship initiatives</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Section -->
+        <div class="cta-section">
+            <h2>Join Our Circle of Service</h2>
+            <p>Be part of something bigger. Make lasting friendships. Create meaningful impact.</p>
+            
+            <div class="cta-content">
+                <div class="cta-text">
+                    <p><strong>Why Join Rotary Bengaluru Heritage North?</strong></p>
+                    <p>✓ Network with accomplished professionals from diverse industries<br>
+                    ✓ Develop leadership skills through hands-on service projects<br>
+                    ✓ Make a tangible difference in your community and beyond<br>
+                    ✓ Access exclusive fellowship activities and cultural experiences<br>
+                    ✓ Build lifelong friendships based on shared values</p>
+                    
+                    <div class="contact-info">
+                        <strong>📧 Contact:</strong> info@rotarybangaloreheritagenorth.org<br>
+                        <strong>📱 WhatsApp:</strong> +91 98765 43210<br>
+                        <strong>🕐 Meeting Time:</strong> Every Thursday, 7:00 PM
+                    </div>
+                </div>
+                
+                <div class="qr-section">
+                    <div class="qr-code">📱</div>
+                    <p><strong>Scan to Express Interest</strong></p>
+                    <p style="font-size: 0.9em; margin: 10px 0;">Quick registration form</p>
+                    <button class="join-button">JOIN US TODAY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Stagger animation for project cards
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.style.animation = 'fadeIn 0.8s ease-out forwards';
+            });
+            
+            // Profile tags hover effect
+            const profileTags = document.querySelectorAll('.profile-tag');
+            profileTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) rotate(2deg)';
+                });
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+            
+            // QR code click effect
+            const qrCode = document.querySelector('.qr-code');
+            const joinButton = document.querySelector('.join-button');
+            
+            [qrCode, joinButton].forEach(element => {
+                if (element) {
+                    element.addEventListener('click', function() {
+                        alert('Thank you for your interest! Please contact us at info@rotarybangaloreheritagenorth.org or call +91 98765 43210 to begin your Rotary journey.');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
