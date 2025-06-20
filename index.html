@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotary Bengaluru Heritage North - Service Above Self</title>
+    <meta name="author" content="Arun Tanksali">
+    <meta name="description" content="Rotary Bengaluru Heritage North - District 3192. Service Above Self. Creating positive change in North Bengaluru through community service, fellowship, and leadership development.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23ffcc00'/><circle cx='50' cy='50' r='35' fill='none' stroke='%231f4e79' stroke-width='3'/><g fill='%231f4e79'><rect x='47' y='15' width='6' height='15' rx='3'/><rect x='47' y='70' width='6' height='15' rx='3'/><rect x='15' y='47' width='15' height='6' rx='3'/><rect x='70' y='47' width='15' height='6' rx='3'/><rect x='26' y='21' width='6' height='12' rx='3' transform='rotate(45 29 27)'/><rect x='68' y='63' width='6' height='12' rx='3' transform='rotate(45 71 69)'/><rect x='26' y='67' width='6' height='12' rx='3' transform='rotate(-45 29 73)'/><rect x='68' y='25' width='6' height='12' rx='3' transform='rotate(-45 71 31)'/></g><circle cx='50' cy='50' r='8' fill='%231f4e79'/></svg>" type="image/svg+xml">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #1f4e79 0%, #2a5f94 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rbhn-logo {
+            height: 60px;
+            width: auto;
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .rotary-wheel {
+            width: 50px;
+            height: 50px;
+            background: #ffcc00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #1f4e79;
+            font-weight: bold;
+            border: 3px solid #1f4e79;
+        }
+
+        .club-info h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .club-info p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ffcc00;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(31, 78, 121, 0.7), rgba(31, 78, 121, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="bangalore" patternUnits="userSpaceOnUse" width="200" height="200"><rect width="200" height="200" fill="%23e3f2fd"/><circle cx="50" cy="50" r="20" fill="%231f4e79" opacity="0.1"/><circle cx="150" cy="150" r="25" fill="%23ffcc00" opacity="0.1"/><rect x="80" y="80" width="40" height="40" fill="%232a5f94" opacity="0.1" rx="5"/><polygon points="120,30 140,70 100,70" fill="%231f4e79" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="url(%23bangalore)"/><g opacity="0.2"><path d="M100,200 Q300,100 500,200 T900,200" stroke="%23ffcc00" stroke-width="3" fill="none"/><circle cx="200" cy="150" r="8" fill="%23ffcc00"/><circle cx="400" cy="180" r="6" fill="%23ffffff"/><circle cx="600" cy="160" r="10" fill="%23ffcc00"/><circle cx="800" cy="190" r="7" fill="%23ffffff"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g fill="%23ffffff" opacity="0.1"><circle cx="20" cy="20" r="2"/><circle cx="80" cy="30" r="1.5"/><circle cx="30" cy="70" r="1"/><circle cx="70" cy="80" r="2.5"/><circle cx="50" cy="40" r="1.5"/></g></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ffcc00;
+            color: #1f4e79;
+        }
+
+        .btn-primary:hover {
+            background: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1f4e79;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-alt {
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #1f4e79;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Four-Way Test */
+        .four-way-test {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .test-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .test-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .test-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1f4e79, #2a5f94);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .test-item h3 {
+            color: #1f4e79;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* Areas of Focus */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .area-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .area-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .area-icon {
+            background: linear-gradient(135deg, #1f4e79, #2a5f94);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        .area-content {
+            padding: 1.5rem;
+        }
+
+        .area-content h3 {
+            color: #1f4e79;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Service Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .project-image.feeding {
+            background: linear-gradient(rgba(31, 78, 121, 0.6), rgba(31, 78, 121, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%23ff9800" width="400" height="200"/><g fill="%23ffffff" opacity="0.3"><circle cx="80" cy="60" r="15"/><circle cx="200" cy="80" r="20"/><circle cx="320" cy="50" r="12"/><rect x="50" y="120" width="60" height="40" rx="10"/><rect x="170" y="130" width="60" height="40" rx="10"/><rect x="290" y="110" width="60" height="40" rx="10"/></g></svg>');
+        }
+
+        .project-image.education {
+            background: linear-gradient(rgba(31, 78, 121, 0.6), rgba(31, 78, 121, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%234caf50" width="400" height="200"/><g fill="%23ffffff" opacity="0.3"><rect x="50" y="40" width="80" height="60" rx="5"/><rect x="160" y="40" width="80" height="60" rx="5"/><rect x="270" y="40" width="80" height="60" rx="5"/><polygon points="200,120 180,140 220,140" fill="%23ffffff" opacity="0.4"/></g></svg>');
+        }
+
+        .project-image.community {
+            background: linear-gradient(rgba(31, 78, 121, 0.6), rgba(31, 78, 121, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%23e91e63" width="400" height="200"/><g fill="%23ffffff" opacity="0.3"><circle cx="100" cy="70" r="25"/><circle cx="200" cy="70" r="25"/><circle cx="300" cy="70" r="25"/><path d="M75,110 Q100,95 125,110 L125,150 L75,150 Z"/><path d="M175,110 Q200,95 225,110 L225,150 L175,150 Z"/><path d="M275,110 Q300,95 325,110 L325,150 L275,150 Z"/></g></svg>');
+        }
+
+        .project-image.polio {
+            background: linear-gradient(rgba(31, 78, 121, 0.6), rgba(31, 78, 121, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect fill="%23673ab7" width="400" height="200"/><g fill="%23ffffff" opacity="0.3"><circle cx="150" cy="80" r="40"/><circle cx="250" cy="80" r="40"/><rect x="130" y="120" width="40" height="60" rx="20"/><rect x="230" y="120" width="40" height="60" rx="20"/><path d="M120,60 Q150,40 180,60" stroke="%23ffffff" stroke-width="3" fill="none"/><path d="M220,60 Q250,40 280,60" stroke="%23ffffff" stroke-width="3" fill="none"/></g></svg>');
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #1f4e79;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-stats {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .project-stats strong {
+            color: #1f4e79;
+        }
+
+        /* Leadership */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .leader-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .leader-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #1f4e79, #2a5f94);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .leader-card h3 {
+            color: #1f4e79;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-card .title {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-card h3 {
+            color: #1f4e79;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #1f4e79;
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f4e79;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: #ffcc00;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .club-info h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="./RBHN Logo - tight.png" alt="RBHN Logo" class="rbhn-logo">
+                <div class="club-info">
+                    <h1>Rotary Bengaluru Heritage North</h1>
+                    <p>District 3192 | Service Above Self</p>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#service">Service</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in">
+            <h2>People of Action</h2>
+            <p>Strengthening communities across North Bengaluru through service, fellowship, and leadership development</p>
+            <div class="cta-buttons">
+                <a href="#service" class="btn btn-primary">Our Projects</a>
+                <a href="#contact" class="btn btn-secondary">Join Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Our Club</h2>
+                <p>Rotary Bengaluru Heritage North is part of the global Rotary network, dedicated to creating positive change in our community and beyond.</p>
+            </div>
+
+            <div class="four-way-test">
+                <div class="test-item fade-in">
+                    <div class="test-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Is it the TRUTH?</h3>
+                    <p>We strive for honesty and transparency in all our actions and communications.</p>
+                </div>
+                <div class="test-item fade-in">
+                    <div class="test-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Is it FAIR to all concerned?</h3>
+                    <p>We ensure equity and justice in our decisions and service projects.</p>
+                </div>
+                <div class="test-item fade-in">
+                    <div class="test-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Will it build GOODWILL?</h3>
+                    <p>We foster better friendships and stronger community bonds through our work.</p>
+                </div>
+                <div class="test-item fade-in">
+                    <div class="test-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Will it be BENEFICIAL?</h3>
+                    <p>We ensure our actions benefit all concerned and create lasting positive impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas of Focus -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Rotary's Areas of Focus</h2>
+                <p>We address the world's most pressing challenges through our seven areas of focus</p>
+            </div>
+
+            <div class="areas-grid">
+                <div class="area-card fade-in">
+                    <div class="area-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="area-content">
+                        <h3>Basic Education & Literacy</h3>
+                        <p>Supporting education initiatives and literacy programs to empower communities.</p>
+                    </div>
+                </div>
+                <div class="area-card fade-in">
+                    <div class="area-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="area-content">
+                        <h3>Water, Sanitation & Hygiene</h3>
+                        <p>Providing access to clean water and sanitation facilities for healthy communities.</p>
+                    </div>
+                </div>
+                <div class="area-card fade-in">
+                    <div class="area-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="area-content">
+                        <h3>Disease Prevention & Treatment</h3>
+                        <p>Fighting diseases and improving healthcare access in underserved areas.</p>
+                    </div>
+                </div>
+                <div class="area-card fade-in">
+                    <div class="area-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="area-content">
+                        <h3>Environment</h3>
+                        <p>Protecting our planet through sustainable environmental initiatives.</p>
+                    </div>
+                </div>
+                <div class="area-card fade-in">
+                    <div class="area-icon">
+                        <i class="fas fa-dove"></i>
+                    </div>
+                    <div class="area-content">
+                        <h3>Peace & Conflict Prevention</h3>
+                        <p>Building peace and preventing conflicts through understanding and cooperation.</p>
+                    </div>
+                </div>
+                <div class="area-card fade-in">
+                    <div class="area-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="area-content">
+                        <h3>Economic Development</h3>
+                        <p>Creating opportunities for economic growth and community development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Projects -->
+    <section id="service" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Service Projects</h2>
+                <p>Making a difference in North Bengaluru and beyond through meaningful service</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image feeding">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Feeding the Hungry</h3>
+                        <p>Our flagship initiative provides meals and dry rations to underserved communities across North Bengaluru including Yelahanka, Jakkur, and surrounding areas.</p>
+                        <div class="project-stats">
+                            <strong>Impact:</strong> 37,500+ people served across multiple locations including Newtown Yelahanka, ISRO Layout, Kenchenalli, and Vidyaranyapura.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image education">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Education Support</h3>
+                        <p>Supporting local schools and educational institutions with resources, infrastructure, and learning materials.</p>
+                        <div class="project-stats">
+                            <strong>Focus:</strong> Government schools and underprivileged students in our catchment area.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image community">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Community Care</h3>
+                        <p>Supporting elderly care homes, police stations, and community centers with essential supplies and services.</p>
+                        <div class="project-stats">
+                            <strong>Partners:</strong> Atria Foundation and local community organizations.
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image polio">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Polio Eradication</h3>
+                        <p>As part of Rotary's global mission, we support polio vaccination drives and awareness programs.</p>
+                        <div class="project-stats">
+                            <strong>Global Impact:</strong> 99.9% reduction in polio cases worldwide since 1979.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership -->
+    <section id="leadership" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Leadership</h2>
+                <p>Dedicated leaders driving positive change in our community</p>
+            </div>
+
+            <div class="leadership-grid">
+                <div class="leader-card fade-in">
+
+                        <h2>Arun Tanksali</h2>
+
+                    <h3>Club President</h3>
+                    <p class="title">2025-26</p>
+                    <p>Leading our club's mission of service above self and community development.</p>
+                </div>
+                <div class="leader-card fade-in">
+                        <h2>Suresh N</h2>
+
+                    <h3>Club Secretary</h3>
+                    <p class="title">2025-26</p>
+                    <p>Managing club operations and ensuring effective communication among members.</p>
+                </div>
+                <div class="leader-card fade-in">
+                        <h2>Deepak Jain</h2>
+                    <h3>Treasurer</h3>
+                    <p class="title">2025-26</p>
+                    <p>Overseeing financial management and ensuring transparent fund utilization.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center; padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                <h3 style="color: #1f4e79; margin-bottom: 1rem;">District 3192</h3>
+                <p><strong>District Governor 2025-26:</strong> Rtn. Prof. Elizabeth Cherian</p>
+                <p><strong>Rotary Club of Bangalore </strong></p>
+                <p style="margin-top: 1rem; font-style: italic;">District 3192 comprises 78 clubs with 3,585 Rotarians across Bangalore Urban & Rural, Mandya, Tumkur, and Chikkaballapur districts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Connect With Us</h2>
+                <p>Join our mission of service and make a difference in your community</p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-card fade-in">
+                    <h3><i class="fas fa-calendar-alt"></i> Meeting Details</h3>
+                    <p><strong>When:</strong> Two meetings a month, Wednesday 7:00 PM and a Weekend</p>
+                    <p><strong>Venue:</strong> Varied locations across Yelahanka</p>
+                    <p><strong>Format:</strong> In-person and Virtual options available</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <h3><i class="fas fa-envelope"></i> Get in Touch</h3>
+                    <p><strong>Email:</strong> <a href="mailto:info@rbhn.org">info@rbhn.org</a></p>
+
+                    <p><strong>Website:</strong> <a href="https://rbhn.org">www.rbhn.org</a></p>
+                </div>
+                <div class="contact-card fade-in">
+                    <h3><i class="fas fa-map-marker-alt"></i> Service Area</h3>
+                    <p>All of RID 3192 geography</p>
+                    <p>Wherever there is an opportunity to be of service</p>
+                </div>
+            </div>
+        <div class="container">
+                <div class="contact-card fade-in">
+                    <h3><i class="fas fa-user-plus"></i> Join Rotary</h3>
+                    <p>Become part of our global network of 1.4 million members</p>
+                    <p>Experience the fellowship of service</p>
+                    <p><strong>Next New Member Night:</strong> Contact us for details</p>
+                </div>
+                </div>
+            <div style="margin-top: 3rem; text-align: center; padding: 2rem; background: #f0f8ff; border-radius: 10px;">
+                <h3 style="color: #1f4e79; margin-bottom: 1rem;">Ready to Make a Difference?</h3>
+                <p style="margin-bottom: 1.5rem;">Join us in creating positive change in North Bengaluru and beyond. Whether you're interested in community service, professional development, or global friendship, Rotary has a place for you.</p>
+                <a href="mailto:info@rbhn.org" class="btn btn-primary">Contact Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://rotary.org">Rotary International</a>
+                <a href="https://rotary3192.org">District 3192</a>
+                <a href="https://rotaryindia.org">Rotary India</a>
+                <a href="#about">About Us</a>
+                <a href="#service">Service Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>&copy; 2024 Rotary Bengaluru Heritage North. All rights reserved.</p>
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
+                Rotary International District 3192 | Service Above Self
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(31, 78, 121, 0.95) 0%, rgba(42, 95, 148, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1f4e79 0%, #2a5f94 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
