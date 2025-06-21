@@ -63,9 +63,6 @@
     }
 
     #logo {
-      width: 100px;
-      height: 100px;
-      background: gray;
       margin-bottom: 20px;
     }
   </style>
@@ -75,7 +72,7 @@
 
   <div id="popup">
     <img src="../RBHN Logo - tight.png" alt="Logo" id="logo" style="margin-bottom: 20px;" />
-    Taking you to the page, please wait...
+    Taking you to the page in a moment ...
   </div>
 
   <script>
@@ -130,12 +127,12 @@
     const targetInfo = targets[targetKey];
 
     if (targetInfo) {
-      const { baseUrl, title, image } = targetInfo;
+      const { url, title, image } = targetInfo;
 
 
       // Preserve UTM parameters
 
-      if (baseUrl) {
+      if (url) {
         // Collect UTM parameters to preserve
         const utmParams = Object.entries(params)
           .filter(([key]) => key.startsWith("utm_"))
@@ -160,16 +157,16 @@
 
         // Redirect after delay
 
-        const redirectUrl = utmParams ? `${baseUrl}?${utmParams}` : baseUrl;
+        const redirectUrl = utmParams ? `${url}?${utmParams}` : url;
 
         setTimeout(() => {
           window.location.href = redirectUrl;
         }, 1000);
       } else {
-        document.getElementById("popup").innerHTML = "<div>Invalid link or it may have expired. Please check your link.</div>";
+        document.getElementById("popup").innerHTML = "<div>Invalid or expired link</div> <br/> <div>Please check your link.</div>";
       }
     } else {
-      document.getElementById("popup").innerHTML = "<div>Invalid link or it may have expired. Please check your link.</div>";
+      document.getElementById("popup").innerHTML = "<div>Invalid or expired link</div> <br/> <div>Please check your link.</div>";
     }
   </script>
 
