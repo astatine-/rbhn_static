@@ -80,7 +80,7 @@
 
   <script>
     const targets = {
-      foo: {
+      join: {
         url: "https://example.com/page-for-foo",
         title: "Welcome to Foo",
         image: "https://yourdomain.com/images/foo.png"
@@ -132,6 +132,7 @@
     if (targetInfo) {
       const { baseUrl, title, image } = targetInfo;
 
+
       // Preserve UTM parameters
 
       if (baseUrl) {
@@ -167,6 +168,9 @@
       } else {
         document.getElementById("popup").innerHTML = "<div>Invalid link or it may have expired. Please check your link.</div>";
       }
+    } else {
+      document.getElementById("popup").innerHTML = "<div>Invalid link or it may have expired. Please check your link.</div>";
+    }
   </script>
 
 </body>
