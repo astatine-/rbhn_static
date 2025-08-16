@@ -24,12 +24,12 @@
   <meta name="twitter:image" content="https://yourdomain.com/logo.png">
 
   <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGY3PBTYR0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX'); // Replace with your actual GA4 Measurement ID
+    gtag('config', 'G-NGY3PBTYR0'); // Replace with your actual GA4 Measurement ID
   </script>
 
   <style>
@@ -165,6 +165,12 @@
         logoDiv.style.backgroundImage = `url('${image}')`;
         logoDiv.textContent = ""; // Clear placeholder text
 
+         // Fire GA redirect success event
+        gtag('event', 'redirect_success', {
+          target_key: targetKey,
+          target_tile: title
+        });
+
         // Redirect after delay
 
         const redirectUrl = utmParams ? `${url}?${utmParams}` : url;
@@ -174,9 +180,15 @@
         }, 300);
       } else {
         document.getElementById("popup").innerHTML = "<div>Invalid or expired link</div> <br/> <div>Please check your link.</div>";
+         gtag('event', 'redirect_failed', {
+          target_key: targetKey || "unknown-1"
+        });
       }
     } else {
       document.getElementById("popup").innerHTML = "<div>Invalid or expired link</div> <br/> <div>Please check your link.</div>";
+       gtag('event', 'redirect_failed', {
+          target_key: targetKey || "unknown-2"
+        });
     }
   </script>
 
