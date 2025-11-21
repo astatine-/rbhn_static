@@ -461,8 +461,8 @@
                 
                 <div class="activities-list">
                     <div class="activity-item">
-                        <h4>🍽️ Weekly Fellowship Meetings</h4>
-                        <p>Every Thursday at premium venues across North Bengaluru, featuring inspiring speakers and networking opportunities</p>
+                        <h4>🍽️ Regular Fellowship Meetings</h4>
+                        <p>Two meetings a month at premium venues across North Bengaluru, featuring inspiring speakers and networking opportunities</p>
                     </div>
                     <div class="activity-item">
                         <h4>🏌️ Sports & Recreation Groups</h4>
@@ -503,9 +503,8 @@
                     ✓ Build lifelong friendships based on shared values</p>
                     
                     <div class="contact-info">
-                        <strong>📧 Contact:</strong> info@rotarybangaloreheritagenorth.org<br>
-                        <strong>📱 WhatsApp:</strong> +91 98765 43210<br>
-                        <strong>🕐 Meeting Time:</strong> Every Thursday, 7:00 PM
+                        <strong>📧 Contact:</strong> info@rbhn.org<br>
+                        <strong>🕐 Meeting Time:</strong> Two meetings a month - Wednesday 7:00 PM and a Weekend
                     </div>
                 </div>
                 
@@ -547,7 +546,7 @@
             [qrCode, joinButton].forEach(element => {
                 if (element) {
                     element.addEventListener('click', function() {
-                        alert('Thank you for your interest! Please contact us at info@rotarybangaloreheritagenorth.org or call +91 98765 43210 to begin your Rotary journey.');
+                        window.location.href = 'mailto:info@rbhn.org?subject=Interest in Joining Rotary Bengaluru Heritage North&body=Hello,%0D%0A%0D%0AI am interested in learning more about joining Rotary Bengaluru Heritage North.%0D%0A%0D%0APlease contact me with more information.%0D%0A%0D%0AThank you.';
                     });
                 }
             });
