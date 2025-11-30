@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>RBHN 10th Anniversary Souvenir - Mobile</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --rotary-royal-blue: #17458f;
+      --rotary-gold: #f7a81b;
+      --rotary-azure: #0067c8;
+      --dark-navy: #071628;
+      --soft-white: #f7f8fc;
+      --accent-violet: #901f93;
+      --accent-turquoise: #00adbb;
+      --bg-gradient-start: #1f5fd1;
+      --bg-gradient-mid: #092145;
+      --bg-gradient-end: #050917;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #e0e4f0;
+      color: #071628;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-top: 100px;
+    }
+
+    /* Sticky Navigation Bar */
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: linear-gradient(135deg, var(--rotary-royal-blue), var(--rotary-azure));
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .nav-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .nav-logo {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-title-box {
+      flex: 1;
+      color: white;
+    }
+
+    .nav-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .nav-subtitle {
+      font-size: 9px;
+      opacity: 0.9;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-tabs {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0 8px;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-tab {
+      flex-shrink: 0;
+      padding: 10px 16px;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-tab:hover,
+    .nav-tab.active {
+      color: white;
+      border-bottom-color: var(--rotary-gold);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Page Container */
+    .page-container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Cover Section */
+    .cover-section {
+      position: relative;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 60%, var(--bg-gradient-end) 100%);
+      color: var(--soft-white);
+      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .cover-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(0,162,224,0.3) 0, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(0,173,187,0.3) 0, transparent 50%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cover-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .cover-logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(7,22,40,0.7);
+      padding: 10px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+    }
+
+    .cover-logo {
+      height: 60px;
+      width: auto;
+    }
+
+    .cover-club-text h2 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .cover-club-text p {
+      font-size: 9px;
+      opacity: 0.8;
+      letter-spacing: 0.12em;
+    }
+
+    .anniversary-badge {
+      background: radial-gradient(circle at 10% 0%, #fff7e2 0, #f3b948 55%, #b86a12 100%);
+      color: #1f1202;
+      padding: 10px 18px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .anniversary-number {
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      padding-right: 8px;
+      border-right: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .anniversary-text {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+    }
+
+    .anniversary-text span {
+      display: block;
+    }
+
+    .cover-hero {
+      margin: 32px 0;
+    }
+
+    .cover-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .cover-title {
+      font-family: "Playfair Display", serif;
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    .cover-title .highlight {
+      display: block;
+      font-size: 42px;
+      background: linear-gradient(120deg, #ffffff, #f9e1a5, #f8b72b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cover-subtitle {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #dfe8ff;
+      margin-bottom: 20px;
+    }
+
+    .cover-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .cover-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(174,193,255,0.5);
+      background: rgba(8,34,82,0.7);
+    }
+
+    .cover-panel {
+      background: linear-gradient(145deg, rgba(9,26,56,0.9), rgba(3,14,32,0.9));
+      border: 1px solid rgba(182,203,255,0.3);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+
+    .panel-title {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 12px;
+    }
+
+    .panel-note {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #e1e7ff;
+    }
+
+    .panel-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .panel-badge {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(140,171,230,0.6);
+      background: rgba(15,42,85,0.8);
+    }
+
+    /* Messages Section */
+    .messages-section {
+      background: linear-gradient(135deg, #122950 0%, #050914 100%);
+      color: var(--soft-white);
+      padding: 40px 20px;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .section-title .highlight {
+      display: block;
+      background: linear-gradient(120deg, #ffffff, #f9e1a5, #f8b72b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .message-card {
+      background: rgba(9,22,52,0.9);
+      border: 1px solid rgba(179,201,255,0.3);
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+    }
+
+    .message-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      overflow: hidden;
+      border: 3px solid rgba(247,168,27,0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .message-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .message-title {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .message-text {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #dfe6ff;
+      margin-bottom: 16px;
+    }
+
+    .message-text p {
+      margin-bottom: 12px;
+    }
+
+    .message-author {
+      text-align: center;
+      border-top: 1px solid rgba(179,201,255,0.2);
+      padding-top: 12px;
+    }
+
+    .message-name {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .message-role {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    /* Highlights Section */
+    .highlights-section {
+      background: linear-gradient(135deg, #e8f0fb 0%, #d4e4f7 50%, #dceaf9 100%);
+      padding: 40px 20px;
+    }
+
+    .stats-line {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 32px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--rotary-royal-blue);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: rgba(7,22,40,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .highlights-grid {
+      display: grid;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .highlight-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .highlight-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: rgba(23,69,143,0.1);
+    }
+
+    .highlight-content {
+      padding: 16px;
+    }
+
+    .highlight-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--rotary-royal-blue);
+      margin-bottom: 8px;
+    }
+
+    .highlight-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(7,22,40,0.85);
+    }
+
+    .highlights-blurb {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.7;
+      color: rgba(7,22,40,0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Year Section */
+    .year-section {
+      background: linear-gradient(135deg, #e8f0fb 0%, #d4e4f7 50%, #dceaf9 100%);
+      padding: 32px 20px;
+      margin-bottom: 20px;
+    }
+
+    .year-header {
+      background: var(--rotary-azure);
+      color: white;
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .year-badge-large {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .year-info-grid {
+      display: grid;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .year-info-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .year-label {
+      font-size: 10px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      min-width: 80px;
+    }
+
+    .year-value {
+      font-weight: 600;
+    }
+
+    .photo-grid-mobile {
+      display: grid;
+      gap: 16px;
+    }
+
+    .photo-card-mobile {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .photo-card-mobile img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
+      background: rgba(7,22,40,0.05);
+      display: block;
+    }
+
+    .photo-caption {
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(7,22,40,0.9);
+    }
+
+    /* Members Section */
+    .members-section {
+      background: white;
+      padding: 40px 20px;
+    }
+
+    .members-group {
+      margin-bottom: 32px;
+    }
+
+    .members-group-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--rotary-royal-blue);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(23,69,143,0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .members-list {
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .member-item {
+      padding: 8px 12px;
+      background: rgba(23,69,143,0.05);
+      border-radius: 6px;
+      color: rgba(7,22,40,0.85);
+    }
+
+    .member-item.current {
+      background: rgba(23,69,143,0.1);
+      color: var(--rotary-royal-blue);
+      font-weight: 600;
+    }
+
+    /* Recognitions Section */
+    .recognitions-section {
+      background: radial-gradient(circle at top left, #1b376d 0%, #071020 55%, #02040a 100%);
+      color: var(--soft-white);
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recognitions-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(0,162,224,0.3) 0, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(0,173,187,0.3) 0, transparent 50%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .recognitions-grid {
+      display: grid;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .recognition-card {
+      background: rgba(9,22,52,0.7);
+      border: 1px solid rgba(179,201,255,0.3);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .recognition-card img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.05);
+      display: block;
+    }
+
+    .recognition-caption {
+      padding: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #dfe6ff;
+      text-align: center;
+    }
+
+    .recognition-text-card {
+      background: linear-gradient(135deg, rgba(23,69,143,0.3), rgba(247,168,27,0.2));
+      border: 1px solid rgba(247,168,27,0.4);
+      border-radius: 12px;
+      padding: 32px 20px;
+      text-align: center;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.8;
+      color: #f0f4ff;
+    }
+
+    /* Memorial Section */
+    .memorial-section {
+      background: linear-gradient(135deg, #f8f9fc 0%, #eff3f8 100%);
+      padding: 40px 20px;
+    }
+
+    .memorial-card {
+      background: white;
+      border: 1px solid rgba(23,69,143,0.15);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .memorial-card.featured {
+      background: linear-gradient(135deg, rgba(23,69,143,0.05), rgba(247,168,27,0.05));
+      border-color: rgba(23,69,143,0.25);
+    }
+
+    .memorial-name {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--rotary-royal-blue);
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(23,69,143,0.2);
+      padding-bottom: 8px;
+    }
+
+    .memorial-role {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(23,69,143,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .memorial-text {
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(7,22,40,0.85);
+    }
+
+    .memorial-text p {
+      margin-bottom: 12px;
+    }
+
+    /* Back Cover */
+    .back-cover-section {
+      background: radial-gradient(circle at top left, #1b376d 0%, #071020 55%, #02040a 100%);
+      color: var(--soft-white);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .back-logo {
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto 24px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    }
+
+    .back-text {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+      opacity: 0.95;
+    }
+
+    .sponsor-box {
+      background: linear-gradient(135deg, rgba(9,22,52,0.8), rgba(15,35,68,0.8));
+      border: 1px solid rgba(179,201,255,0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .sponsor-logo {
+      height: 50px;
+      width: auto;
+      margin-bottom: 12px;
+    }
+
+    .sponsor-text {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+    }
+
+    .contact-info {
+      background: rgba(9,22,52,0.6);
+      border: 1px solid rgba(179,201,255,0.2);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .contact-row {
+      margin-bottom: 12px;
+    }
+
+    .contact-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .contact-value a {
+      color: var(--soft-white);
+      text-decoration: none;
+    }
+
+    .qr-box {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      display: inline-block;
+      margin: 20px 0;
+    }
+
+    .qr-image {
+      width: 120px;
+      height: 120px;
+      display: block;
+    }
+
+    .qr-caption {
+      font-size: 11px;
+      color: #071628;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .page-footer {
+      background: var(--dark-navy);
+      color: rgba(255,255,255,0.7);
+      padding: 20px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .mt-24 { margin-top: 24px; }
+
+    @media (min-width: 640px) {
+      .page-container {
+        max-width: 640px;
+      }
+
+      .cover-title {
+        font-size: 48px;
+      }
+
+      .cover-title .highlight {
+        font-size: 56px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navigation -->
+  <nav class="nav-container">
+    <div class="nav-header">
+      <img src="rbhn-white.png" alt="RBHN Logo" class="nav-logo">
+      <div class="nav-title-box">
+        <div class="nav-title">10th Anniversary Souvenir</div>
+        <div class="nav-subtitle">2015 – 2025</div>
+      </div>
+    </div>
+    <div class="nav-tabs" id="navTabs">
+      <a href="#cover" class="nav-tab">Cover</a>
+      <a href="#messages" class="nav-tab">Messages</a>
+      <a href="#highlights" class="nav-tab">Highlights</a>
+      <a href="#year-2015-16" class="nav-tab">2015-16</a>
+      <a href="#year-2016-17" class="nav-tab">2016-17</a>
+      <a href="#year-2017-18" class="nav-tab">2017-18</a>
+      <a href="#year-2018-19" class="nav-tab">2018-19</a>
+      <a href="#year-2019-20" class="nav-tab">2019-20</a>
+      <a href="#year-2020-21" class="nav-tab">2020-21</a>
+      <a href="#year-2021-22" class="nav-tab">2021-22</a>
+      <a href="#year-2022-23" class="nav-tab">2022-23</a>
+      <a href="#year-2023-24" class="nav-tab">2023-24</a>
+      <a href="#year-2024-25" class="nav-tab">2024-25</a>
+      <a href="#year-2025-26" class="nav-tab">2025-26</a>
+      <a href="#members" class="nav-tab">Members</a>
+      <a href="#recognitions" class="nav-tab">Recognitions</a>
+      <a href="#memorial" class="nav-tab">In Memoriam</a>
+      <a href="#contact" class="nav-tab">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-container">
+
+    <!-- FRONT COVER -->
+    <section id="cover" class="cover-section">
+      <div class="cover-bg-overlay"></div>
+      <div class="cover-content">
+        <div class="cover-header">
+          <div class="cover-logo-box">
+            <img src="rbhn-white.png" alt="RBHN Logo" class="cover-logo">
+            <div class="cover-club-text">
+              <h2>Rotary Bengaluru Heritage North</h2>
+              <p>District 3192</p>
+            </div>
+          </div>
+          <div class="anniversary-badge">
+            <div class="anniversary-number">10</div>
+            <div class="anniversary-text">
+              <span>Years</span>
+              <span>Of Service</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-hero">
+          <div class="cover-kicker">Commemorative Souvenir</div>
+          <h1 class="cover-title">
+            <span class="highlight">10th Anniversary</span>
+            Souvenir
+          </h1>
+          <p class="cover-subtitle">
+            Celebrating <strong>a decade of service</strong>, fellowship, and lasting impact across North Bengaluru and beyond.
+          </p>
+          <div class="cover-meta">
+            <div class="cover-pill">2015 – 2025</div>
+            <div class="cover-pill">Yelahanka · Bengaluru</div>
+          </div>
+        </div>
+
+        <div class="cover-panel">
+          <div class="panel-title">People of Action</div>
+          <p class="panel-note">
+            From feeding the hungry to supporting schools, in communities across RID 3192, this souvenir captures stories of transformation, leadership, and hope over a decade of service.
+          </p>
+          <div class="panel-badges">
+            <div class="panel-badge">Service Above Self</div>
+            <div class="panel-badge">Fellowship</div>
+            <div class="panel-badge">Passion</div>
+            <div class="panel-badge">Compassion</div>
+            <div class="panel-badge">Leadership</div>
+            <div class="panel-badge">Perseverance</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESSAGES SECTION -->
+    <section id="messages" class="messages-section">
+      <div class="section-header">
+        <div class="section-kicker">10th Anniversary Souvenir</div>
+        <h2 class="section-title">
+          <span class="highlight">A Decade of Service</span>
+          2015 – 2025
+        </h2>
+      </div>
+
+      <div class="message-card">
+        <div class="message-photo">
+          <img src="dgec.jpg" alt="Rtn. Prof. Elizabeth Cherian">
+        </div>
+        <div class="message-title">Message from the District Governor</div>
+        <div class="message-text">
+          <p>It is my pleasure to congratulate Rotary Bengaluru Heritage North on completing a decade of meaningful service. Your club continues to set high standards of commitment, fellowship, and impactful community initiatives within RID 3192.</p>
+          <p>As you celebrate this milestone, may you continue to innovate, include, and inspire – touching more lives and nurturing more leaders in the great tradition of Rotary.</p>
+        </div>
+        <div class="message-author">
+          <div class="message-name">Rtn. Prof. Elizabeth Cherian</div>
+          <div class="message-role">District Governor, RID 3192</div>
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-photo">
+          <img src="pat.jpg" alt="Rtn. Arun Tanksali">
+        </div>
+        <div class="message-title">Message from the President</div>
+        <div class="message-text">
+          <p>Dear friends in Rotary and well-wishers, this 10th Anniversary Souvenir is a celebration of the spirit that defines our club — service, fellowship, and a deep commitment to our community.</p>
+          <p>As you turn these pages, may you be reminded of the lives we have touched, the friendships we have built, and the responsibility we carry to keep serving with humility and joy.</p>
+        </div>
+        <div class="message-author">
+          <div class="message-name">Rtn. Arun Tanksali</div>
+          <div class="message-role">President, Rotary Bengaluru Heritage North</div>
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-photo">
+          <img src="esm.jpg" alt="Rtn. Muralidhar Srinivasiah">
+        </div>
+        <div class="message-title">Introducing the Souvenir</div>
+        <div class="message-text">
+          <p>This souvenir captures the achievements, memories, and spirit of RBHN across ten wonderful years. It reflects the passion of our members, volunteers, and partners who make our service possible.</p>
+          <p>My sincere thanks to everyone who contributed articles, photographs, inputs, and encouragement. May this edition serve as a proud record of our heritage and an inspiration for the years ahead.</p>
+        </div>
+        <div class="message-author">
+          <div class="message-name">Rtn. Muralidhar Srinivasiah</div>
+          <div class="message-role">Souvenir Editor, 10th Anniversary Souvenir</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS SECTION -->
+    <section id="highlights" class="highlights-section">
+      <div class="section-header">
+        <div class="section-kicker">2015 – 2025</div>
+        <h2 class="section-title">
+          <span class="highlight">Glimpses of a Decade</span>
+        </h2>
+      </div>
+
+      <div class="stats-line">
+        <div class="stat-item">
+          <div class="stat-number">10</div>
+          <div class="stat-label">Years of Service</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100K+</div>
+          <div class="stat-label">Lives Touched</div>
+        </div>
+      </div>
+
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <img class="highlight-image" src="extracted_images/2024-25/image13.jpeg" alt="Education">
+          <div class="highlight-content">
+            <div class="highlight-title">Education</div>
+            <div class="highlight-text">Supporting 10+ schools with infrastructure, scholarships, and educational materials to empower young minds</div>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <img class="highlight-image" src="extracted_images/Highlights/health.jpg" alt="Health">
+          <div class="highlight-content">
+            <div class="highlight-title">Health and Wellness</div>
+            <div class="highlight-text">Free medical camps, charitable dispensaries, and health awareness programs serving the community</div>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <img class="highlight-image" src="extracted_images/Highlights/env.jpeg" alt="Environment">
+          <div class="highlight-content">
+            <div class="highlight-title">Environment</div>
+            <div class="highlight-text">Tree plantation drives, lake rejuvenation awareness, and sustainable community development projects</div>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <img class="highlight-image" src="extracted_images/Highlights/SCR-20251130-i10.jpeg" alt="Youth">
+          <div class="highlight-content">
+            <div class="highlight-title">Engage with the Youth</div>
+            <div class="highlight-text">Work with the youth, support, guide and motivate them to be good citizens and proud professionals</div>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <img class="highlight-image" src="extracted_images/2025-26/image3.jpg" alt="District">
+          <div class="highlight-content">
+            <div class="highlight-title">District Collaboration</div>
+            <div class="highlight-text">Active participation in district-wide projects and initiatives across RID 3192 for greater reach and impact</div>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <img class="highlight-image" src="extracted_images/Highlights/mem.jpeg" alt="Fellowship">
+          <div class="highlight-content">
+            <div class="highlight-title">Member Engagement</div>
+            <div class="highlight-text">Members connecting with each other to build stronger bonds and sow the seeds of greater service</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlights-blurb">
+        Rotary Bengaluru Heritage North has been active in every avenue of service. We have created projects that have lasting impact and every member, present and past, has played a part in our success through their passion and perseverance. This souvenir captures vignettes of transformation, leadership, and hope over a decade of service.
+      </div>
+    </section>
+
+    <!-- YEAR SECTIONS (dynamically generated) -->
+    <div id="yearSections"></div>
+
+    <!-- YEAR 2025-26 PREVIEW -->
+    <section id="year-2025-26" class="year-section">
+      <div class="year-header">
+        <div class="year-badge-large">Year 2025 – 2026</div>
+        <div class="year-info-grid">
+          <div class="year-info-row">
+            <span class="year-label">President:</span>
+            <span class="year-value">Rtn Arun Tanksali</span>
+          </div>
+          <div class="year-info-row">
+            <span class="year-label">DG:</span>
+            <span class="year-value">Rtn Prof. Elizabeth Cherian</span>
+          </div>
+        </div>
+      </div>
+      <div class="photo-grid-mobile">
+        <div class="photo-card-mobile">
+          <img src="extracted_images/2025-26/SCR-20251130-kyr.jpeg" alt="Installation" loading="lazy">
+          <div class="photo-caption">Installation of Arun Tanksali, with Past President Rashmi and newly inducted member Amita</div>
+        </div>
+        <div class="photo-card-mobile">
+          <img src="extracted_images/2025-26/image1.jpg" alt="IEEE MOVE" loading="lazy">
+          <div class="photo-caption">Launch of IEEE MOVE Vehicle, in the presence of IEEE Presidents, IEEE MOVE Chair and DG</div>
+        </div>
+        <div class="photo-card-mobile">
+          <img src="extracted_images/2025-26/image3.jpg" alt="Jwala" loading="lazy">
+          <div class="photo-caption">Jwala - ICGF Youth Service with RBHN as the Host Club</div>
+        </div>
+        <div class="photo-card-mobile">
+          <img src="extracted_images/2025-26/image4.jpeg" alt="Children's Day" loading="lazy">
+          <div class="photo-caption">Children's Day celebrations at the LBS Nagar Anganwadi which our club has renovated</div>
+        </div>
+        <div class="photo-card-mobile">
+          <img src="extracted_images/2025-26/image5.jpeg" alt="Solar Kits" loading="lazy">
+          <div class="photo-caption">Distribution of Solar Kits to rural entrepreneurs, courtesy IEEE India Philanthropy and Schneider Electric</div>
+        </div>
+        <div class="photo-card-mobile">
+          <div class="photo-caption" style="padding: 32px 20px; font-style: italic; text-align: center; background: linear-gradient(135deg, rgba(23,69,143,0.05), rgba(247,168,27,0.05));">
+            As we conclude this 10-year commemoration, we look forward to years of meaningful service, fellowship, and community impact. The pages of 2025-26 are yet to be completed, but they will be filled with the same spirit of dedication and compassion that has defined our first decade.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERS SECTION -->
+    <section id="members" class="members-section">
+      <div class="section-header">
+        <div class="section-kicker">2015 – 2025</div>
+        <h2 class="section-title">
+          <span class="highlight">Our Rotary Family</span>
+        </h2>
+      </div>
+
+      <div class="members-group">
+        <div class="members-group-title">Current Members (2024-25)</div>
+        <div class="members-list">
+          <div class="member-item current">Mukesh Agarwal</div>
+          <div class="member-item current">Vittala Ashoka</div>
+          <div class="member-item current">Balaka Chatterjee</div>
+          <div class="member-item current">Jayanta Chatterjee</div>
+          <div class="member-item current">Prateek Chaudhary</div>
+          <div class="member-item current">Vaishali Chaudhary</div>
+          <div class="member-item current">Deepak Jain</div>
+          <div class="member-item current">Pinky Jain</div>
+          <div class="member-item current">Sanny K P</div>
+          <div class="member-item current">Venkatesh Kasturi</div>
+          <div class="member-item current">Asha Ketharam</div>
+          <div class="member-item current">R Kumaran</div>
+          <div class="member-item current">Asha Kumari</div>
+          <div class="member-item current">Togi Mathew</div>
+          <div class="member-item current">Nakhat Mubeen</div>
+          <div class="member-item current">Sundari Muralidhar</div>
+          <div class="member-item current">Suresh Narayanan</div>
+          <div class="member-item current">Aarti Padhiar</div>
+          <div class="member-item current">Uttang Padhiar</div>
+          <div class="member-item current">Manoj Kumar Prasad</div>
+          <div class="member-item current">Bishan Singh Raghav</div>
+          <div class="member-item current">Neelam Singh Raghav</div>
+          <div class="member-item current">Susan Sanny</div>
+          <div class="member-item current">Barkha Sharma</div>
+          <div class="member-item current">Deepti Sharma</div>
+          <div class="member-item current">Kuldeep Sharma</div>
+          <div class="member-item current">Himanshu Singh</div>
+          <div class="member-item current">Muralidhar Srinivasiah</div>
+          <div class="member-item current">Amita Tanksali</div>
+          <div class="member-item current">Arun Tanksali</div>
+          <div class="member-item current">Rashmi Tanksali</div>
+        </div>
+      </div>
+
+      <div class="members-group">
+        <div class="members-group-title">Past Members & Alumni</div>
+        <div class="members-list">
+          <div class="member-item">Yashu Agarwal</div>
+          <div class="member-item">Balasundaram A. Athreya</div>
+          <div class="member-item">Srikanth B</div>
+          <div class="member-item">Kashinath Bhairappa</div>
+          <div class="member-item">Vanamala Bhairappa</div>
+          <div class="member-item">Mukesh Bohra</div>
+          <div class="member-item">Pranab Dutta Bordoloi</div>
+          <div class="member-item">Kalyan Chakravarty</div>
+          <div class="member-item">Rajendra Chandel</div>
+          <div class="member-item">G. Chandre Gowda</div>
+          <div class="member-item">Kailash Chaudhary</div>
+          <div class="member-item">Anil Choudhary</div>
+          <div class="member-item">Nikhil Dayakar</div>
+          <div class="member-item">Soumya Dayakar</div>
+          <div class="member-item">Surabhi Deo</div>
+          <div class="member-item">Karunakar Dev</div>
+          <div class="member-item">Arun A. Gopal</div>
+          <div class="member-item">Vijay Kumar Goyal</div>
+          <div class="member-item">Ramandeep Gulhati</div>
+          <div class="member-item">Trilok S. Gulhati</div>
+          <div class="member-item">Aman Gupta</div>
+          <div class="member-item">Neelam Israni</div>
+          <div class="member-item">Manish Jain</div>
+          <div class="member-item">Vinay Jain</div>
+          <div class="member-item">Vinay Kumar Jain</div>
+          <div class="member-item">Raghu K N</div>
+          <div class="member-item">Satwinder Kaur</div>
+          <div class="member-item">M.S. Khaira</div>
+          <div class="member-item">Lalith Khandelwal</div>
+          <div class="member-item">Narayanan Surya Kumar</div>
+          <div class="member-item">Narender Kumar</div>
+          <div class="member-item">Rethesh Kumar</div>
+          <div class="member-item">Shiva Kumar</div>
+          <div class="member-item">Vishal Mahesh</div>
+          <div class="member-item">K S Murthy</div>
+          <div class="member-item">Nagarajan Krishna Murthy</div>
+          <div class="member-item">Sreedharan Kannan Nair</div>
+          <div class="member-item">Rahul Parashar</div>
+          <div class="member-item">Puranjan Pathak</div>
+          <div class="member-item">Manoj Kumar Phagotra</div>
+          <div class="member-item">Prabhu S Prabhukumar</div>
+          <div class="member-item">Sridhar Prasad</div>
+          <div class="member-item">Sreedevi Priyadarsini</div>
+          <div class="member-item">Anju Pruthi</div>
+          <div class="member-item">Mini Pushkar</div>
+          <div class="member-item">Sowmya M. Puthra</div>
+          <div class="member-item">Ranjini R</div>
+          <div class="member-item">Poosapati Jagannatha Raju</div>
+          <div class="member-item">Hema Rao</div>
+          <div class="member-item">Ameet Rathore</div>
+          <div class="member-item">Prathap YVN Reddy</div>
+          <div class="member-item">Sugata Roy</div>
+          <div class="member-item">Prashant S B</div>
+          <div class="member-item">Debjani Saha</div>
+          <div class="member-item">K.C. Saluja</div>
+          <div class="member-item">Abha Saxena</div>
+          <div class="member-item">Sapna Sehgal</div>
+          <div class="member-item">Thamarai Selvi N</div>
+          <div class="member-item">Vishal Sethi</div>
+          <div class="member-item">Kedar Shahgadkar</div>
+          <div class="member-item">Ankur Sharma</div>
+          <div class="member-item">Manoj Sharma</div>
+          <div class="member-item">Pankaj Sharma</div>
+          <div class="member-item">Pradip Sharma</div>
+          <div class="member-item">Krishna Pal Singh Nayal</div>
+          <div class="member-item">Bishan Singh Raghav</div>
+          <div class="member-item">Aswin Sundararajan</div>
+          <div class="member-item">Nagesh Narasimhalu Thotta</div>
+          <div class="member-item">Sreenu Tumati</div>
+          <div class="member-item">Chaitra V H</div>
+          <div class="member-item">Shilpa Vijay</div>
+          <div class="member-item">Khan Yamin</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECOGNITIONS SECTION -->
+    <section id="recognitions" class="recognitions-section">
+      <div class="section-header">
+        <div class="section-kicker">2015 – 2025</div>
+        <h2 class="section-title">
+          <span class="highlight">Club Recognitions</span>
+        </h2>
+      </div>
+
+      <div class="recognitions-grid">
+        <div class="recognition-card">
+          <img src="extracted_images/recognitions/aos.jpeg" alt="Avenues of Service Award" loading="lazy">
+          <div class="recognition-caption">The prestigious Avenues of Service Award from Rotary International received by Rashmi Tanksali</div>
+        </div>
+
+        <div class="recognition-card">
+          <img src="extracted_images/recognitions/narender.jpeg" alt="Early Success" loading="lazy">
+          <div class="recognition-caption">Early start to being a well regarded club in the District, with President Narender Kumar</div>
+        </div>
+
+        <div class="recognition-card">
+          <img src="extracted_images/recognitions/uttang.jpeg" alt="District Success" loading="lazy">
+          <div class="recognition-caption">Continued success in the District during President Uttang Padhiar's tenure</div>
+        </div>
+
+        <div class="recognition-card">
+          <img src="extracted_images/recognitions/WhatsApp Image 2025-11-30 at 13.09.44.jpeg" alt="Guinness World Record" loading="lazy">
+          <div class="recognition-caption">Our club was a participant in setting the Guinness World Record for Most Blood Collected in a Day</div>
+        </div>
+
+        <div class="recognition-card">
+          <img src="extracted_images/recognitions/clubbuilder.jpeg" alt="Club Builder Award" loading="lazy">
+          <div class="recognition-caption">Rtn Rashmi Tanksali was bestowed the prestigious Club Builder award by Rotary International</div>
+        </div>
+
+        <div class="recognition-text-card">
+          There are many more awards and recognitions in our kitty, but space prohibits us from listing all our achievements. There will be many more as we continue on the path of Service Above Self
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMORIAL SECTION -->
+    <section id="memorial" class="memorial-section">
+      <div class="section-header">
+        <div class="section-kicker">2015 – 2025</div>
+        <h2 class="section-title">
+          <span class="highlight">In Memoriam</span>
+        </h2>
+      </div>
+
+      <div class="memorial-card featured">
+        <div class="memorial-name">Rtn. Trilok Gulhati</div>
+        <div class="memorial-role">GSR and Mentor — Rotary Bengaluru Heritage NCC, now Rotary Bengaluru Heritage North</div>
+        <div class="memorial-text">
+          <p>With deep respect and heartfelt remembrance, we pay tribute to <strong>Rtn. Trilok Gulhati</strong>, a visionary Rotarian and a true believer in "Service Above Self." As the founder of Rotary Bengaluru Heritage NCC—presently Rotary Bengaluru Heritage North—he laid the strong foundation upon which our club continues to grow and serve.</p>
+          <p>GSR Rtn. Gulhati was an embodiment of compassion, humility, and leadership. His dedication to impactful community service and humanitarian initiatives touched countless lives. He inspired every Rotarian who worked alongside him, demonstrating that when one person leads with sincerity and purpose, others are moved to join and amplify the mission of service.</p>
+          <p>Gifted with the ability to bring people together for noble causes, he created a culture of collaboration and goodwill that remains at the heart of our RBHN family. His passion for uplifting communities, supporting the underserved, and spreading kindness is a legacy that continues to guide us. While we mourn his loss, we celebrate the life he lived and the transformation he brought to the world around him. His values, his vision, and his unyielding spirit will forever remain a part of our club's identity. May your soul rest in eternal peace. Your memory will always be treasured in the hearts of all who knew you.</p>
+        </div>
+      </div>
+
+      <div class="memorial-card">
+        <div class="memorial-name">Rtn. Thamarai Selvi</div>
+        <div class="memorial-text">
+          <p>We fondly remember <strong>Rtn. Thamarai Selvi</strong> as a vibrant, enthusiastic storyteller whose warmth and cheerful presence brought joy wherever she went. A devoted Rotarian at heart, she dedicated herself to touching lives through her unique talents—especially her remarkable puppetry skills, which she used to inspire, educate, and spread smiles across communities.</p>
+          <p>With the soul of a passionate teacher, she always strived to create magic for others. Her compassion, her care for individuals, and her unwavering willingness to serve made her an irreplaceable part of Rotary Heritage NCC—now Rotary Bengaluru Heritage North. She actively engaged in every club initiative and held a strong commitment to road safety awareness.</p>
+          <p>Thamarai Selvi had a beautiful gift—she connected effortlessly with everyone she met. She built lasting bonds with fellow Rotarians through her kindness, sense of humor, and genuine concern for others. Her remarkable involvement played a significant role in the success of the TSD Car Rally fundraiser organized during 2018-19.</p>
+        </div>
+      </div>
+
+      <div class="memorial-card">
+        <div class="memorial-name">Dr. Udai Pratap Singh</div>
+        <div class="memorial-text">
+          <p>We remember <strong>Dr. Udai Singh</strong> as the true embodiment of Rotary's guiding principle — <em>Service Above Self</em>. His extraordinary dedication to the Rotary Charitable Dispensary for over five years stands as a shining example of compassion in service.</p>
+          <p>With his calm presence, gentle smile, and kind words, he brought comfort and hope to every patient he treated. He reminded beneficiaries of the importance of caring for their health, offering not just medical guidance but heartfelt encouragement. For many, he was not only their doctor but a source of strength and reassurance.</p>
+          <p>Dr. Uday connected deeply with our RBHN family as well — a friend to all, approachable and supportive whenever called upon. During the challenging times of the COVID-19 pandemic, he went above and beyond to ensure patients received timely care and, when needed, stood by their side with unwavering commitment. His invaluable contribution was pivotal to the Rotary Charitable Dispensary earning the <em>Significant Project Award</em> for two consecutive years.</p>
+        </div>
+      </div>
+
+      <div class="memorial-card">
+        <div class="memorial-name">Rtn. Kashinath</div>
+        <div class="memorial-text">
+          <p>We recall with deep admiration the service and dedication of <strong>Rtn. Kashinath</strong>, a committed Rotarian who truly upheld the spirit of giving. Despite his frequent travels to Africa, he always made time to support meaningful charitable initiatives. His contributions, generosity of spirit, and willingness to serve will always be cherished and remembered by every member of our club. Rtn. Kashinath has left behind a legacy of kindness and responsibility — values that continue to inspire us. May his soul rest in peace, and may his memory remain a guiding light in our journey of service.</p>
+        </div>
+      </div>
+
+      <div class="memorial-card">
+        <div class="memorial-name">Rtn. Pradip Sharma</div>
+        <div class="memorial-text">
+          <p>Rtn. Pradip Sharma, a young and passionate tennis talent, left us far too soon. His sudden passing deeply saddened the RBHN family. A shining star in district sports events, he brought pride to our club. We honoured his vibrant spirit through a tennis tournament held in his loving memory.</p>
+        </div>
+      </div>
+
+      <div class="memorial-card">
+        <div class="memorial-name">Annette Rahul Arun Gowda</div>
+        <div class="memorial-text">
+          <p>Annette Rahul, beloved son of Rtn. Arun Gopal, left us far too early, with his dreams of serving the nation still unfolding. Even at a tender age, he lived the spirit of <em>Service Above Self</em>, supporting students and showing deep compassion for others. His gentle presence is greatly missed at RBHN, and his kindness will forever remain in our hearts.</p>
+        </div>
+      </div>
+
+      <div class="memorial-card">
+        <div class="memorial-name">Rtn. Vinay Kumar Jain</div>
+        <div class="memorial-text">
+          <p>We recall with deep admiration the service and dedication of Rtn. Vinay Kumar. His sudden passing deeply saddened the RBHN family. He brought pride to our club.</p>
+        </div>
+      </div>
+
+      <div class="memorial-card">
+        <div class="memorial-name">Rtn. Raghu KN</div>
+        <div class="memorial-text">
+          <p>We recall with deep admiration the service and dedication of Rtn. Raghu KN. His sudden passing deeply saddened the RBHN family. His support of many community events is still fondly remembered.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACK COVER / CONTACT -->
+    <section id="contact" class="back-cover-section">
+      <img src="rbhn-white.png" alt="RBHN Logo" class="back-logo">
+
+      <p class="back-text">
+        This souvenir captures a journey of <strong>service above self</strong>, fellowship, and shared purpose. As we look back on ten years of Rotary Bengaluru Heritage North, we recommit ourselves to building stronger, kinder, and more resilient communities in North Bengaluru and beyond.
+      </p>
+
+      <div class="sponsor-box">
+        <img src="fuji-white.png" alt="Fuji Electric" class="sponsor-logo">
+        <div class="sponsor-text">Souvenir graciously supported by Fuji Electric</div>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-label">Website</div>
+          <div class="contact-value"><a href="https://rbhn.org">rbhn.org</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:info@rbhn.org">info@rbhn.org</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Yelahanka, Bengaluru</div>
+        </div>
+      </div>
+
+      <div class="qr-box">
+        <img src="rbhn-qr-code.png" alt="Visit rbhn.org" class="qr-image">
+        <div class="qr-caption">Scan to visit rbhn.org</div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <div>Rotary · People of Action</div>
+      <div>10th Anniversary · 2015 – 2025</div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Year data for all pages
+    const yearData = [
+      {
+        id: "year-2015-16",
+        year: "2015 – 2016",
+        president: "Rtn K C Saluja",
+        governor: "Flt. Lt. K P Nagesh",
+        theme: "Be a Gift to The World",
+        yearShort: "2015-16",
+        pages: [
+          {
+            photos: [
+              { image: "image2.jpeg", caption: "Charter function organised by the sponsor club, Rotary Bangalore Midtown. Among the seated are DG Rtn K P Nagesh, Rtn Trilok Gulhati, Charter President K C Saluja, Charter Secretary Uttang Padhiar." },
+              { image: "image3.jpeg", caption: "April 2016: President Saluja at the Rotary Dispensary, Heritage Estate, with ZG Hariram Thakkar, Shiv Kumar, B Athreya, AG Shiva Kumar and Narender Kumar" },
+              { image: "image4.jpeg", caption: "Rtn Vishal Sethi's father cuts the ribbon to inaugurate the Dispensary, as Dr Sridevi, Shiv Kumar and other Rotarians watch" },
+              { image: "image5.jpeg", caption: "President Saluja at a District Event" },
+              { image: "image6.jpeg", caption: "President Saluja at Mathru Blind School, Yelahanka with school staff & Rtns Trilok Gulhati, Rashmi and Sundari. 100 students supported by RBHN" },
+              { image: "image7.jpeg", caption: "Rtn Trilok Gulhati speaking at Mathru Blind School on Helen Keller's Birthday" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image8.jpeg", caption: "Visit of AG to the Club: GSR Trilok Gulhati, Rtn Satish Manandi from RB Midtown (our parent Club), President Saluja, AG Ambika Narayan and Rtn Uttang" },
+              { image: "image9.jpeg", caption: "President Saluja in good company" },
+              { image: "image10.jpeg", caption: "New member induction at Prestige Oasis" },
+              { image: "image11.jpeg", caption: "GSR Gulhatiji doing the honours" },
+              { image: "image1.jpeg", caption: "Charter President Rtn K C Saluja" },
+              { image: "image2.jpeg", caption: "Charter function with District dignitaries" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2016-17",
+        year: "2016 – 2017",
+        president: "Rtn Shiv Kumar Arora",
+        governor: "Rtn Dinesh Shetty",
+        theme: "Rotary Serving Humanity",
+        yearShort: "2016-17",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Shiv Kumar Arora" },
+              { image: "image2.jpeg", caption: "Club installation at Prestige Oasis" },
+              { image: "image3.jpeg", caption: "President Shiv with AG Ajay Satya" },
+              { image: "image4.jpeg", caption: "Rtn Shiv Kumar and Uttang at the GSR's residence for coffee chat" },
+              { image: "image5.jpeg", caption: "President Shiv presents Charter to the Club, as the banner is unfurled" },
+              { image: "image6.jpeg", caption: "President Shiv with another RBHN member at a district event" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "Handover of spectacles to a beneficiary at the eye screening camp organised by RBHN at Brindavana School" },
+              { image: "image8.jpeg", caption: "Eye screening camp conducted by RBHN with Lions Club at Brindavana School. 65 students were screened." },
+              { image: "image9.jpeg", caption: "Rtn Shiv Kumar hands over spectacles to a beneficiary." },
+              { image: "image10.jpeg", caption: "President Shiv Kumar welcomes a new member." },
+              { image: "image11.jpeg", caption: "Vocational visit to Taj Yeshwantpur" },
+              { image: "image12.jpeg", caption: "Rtn Shiv Kumar, GSR Trilok Gulhati, and Rtns Rama, Paro, Hema at a District Event" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2017-18",
+        year: "2017 – 2018",
+        president: "Rtn Shambhu Athreya",
+        governor: "Rtn Sharad M Kulkarni",
+        theme: "Rotary: Making a Difference",
+        yearShort: "2017-18",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Shambhu Athreya" },
+              { image: "image2.jpeg", caption: "President Shambhu at the installation function" },
+              { image: "image3.jpeg", caption: "Onesie Project launch by President Shambhu at Jayanagar General Hospital (JGH). Buntings visible in background." },
+              { image: "image4.jpeg", caption: "A newborn with his mom at JGH wrapped in the Onesie provided by RBHN. Onesie project was a multi-club initiative." },
+              { image: "image5.jpeg", caption: "Neelakantapuram tree plantation" },
+              { image: "image6.jpeg", caption: "Rtn Muralidhar with student from Christel House School" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "Presidential handover: President Shambhu hands over the President's collar to incoming President Paro Patel" },
+              { image: "image8.jpeg", caption: "Independence day function at Christel House School, Yelahanka" },
+              { image: "image9.jpeg", caption: "RBHN members at a fellowship dinner event" },
+              { image: "image10.jpeg", caption: "Presidential visit to RBHN. Foreground: PDG Prabhakar Jadhav, President Shambhu, and Sponsor Club President. Background: GSR Trilok Gulhati, Rtn Shiv Kumar, and Rtn Paro" },
+              { image: "image11.jpeg", caption: "Rtn Shambhu in thoughtful conversation" },
+              { image: "image12.jpeg", caption: "Fun time at a fellowship meeting" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2018-19",
+        year: "2018 – 2019",
+        president: "Rtn Paro Patel",
+        governor: "Rtn Ravi Wig",
+        theme: "Be the Inspiration",
+        yearShort: "2018-19",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Paro Patel" },
+              { image: "image2.jpeg", caption: "Installation of President Paro and the Board for 2018-19" },
+              { image: "image3.jpeg", caption: "RBHN members at the Installation function" },
+              { image: "image4.jpeg", caption: "Interact Club Inauguration. Foreground: President Paro with GSR Trilok Gulhati, AG Deepthi. Background: Interact Club President Kavya, Faculty Dr Srinivas" },
+              { image: "image5.jpeg", caption: "Inauguration of Interact Club by President Paro. Faculty Dr Srinivas, Principal, and Interact Club President Kavya in attendance" },
+              { image: "image6.jpeg", caption: "Inauguration of Interact Club of RBANMS, Vidyaranyapura by President Paro. AG Deepti Prasad, Interact President Kavya, Rtn Shambhu, Rtn Trilok Gulhati, and Rtn Piyush in attendance." }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "Plantation drive at Nagavara Lake by RBHN members" },
+              { image: "image8.jpeg", caption: "Presidential handover: President Paro hands over the President's collar to Rtn Uttang Padhiar" },
+              { image: "image9.jpeg", caption: "RBHN members at an event with VIPs from the community" },
+              { image: "image10.jpeg", caption: "President Paro with Rtns Shiv Kumar Arora, Shambhu Athreya, K C Saluja, Piyush Samdani and Prachi Awasthi at a Fellowship Dinner" },
+              { image: "image11.jpeg", caption: "Rotarians listen intently during a presentation at the District Conference" },
+              { image: "image12.jpeg", caption: "President Paro with Rtns Shambhu, Shiv Kumar, K C Saluja, Piyush and Prachi at a Fellowship event" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2019-20",
+        year: "2019 – 2020",
+        president: "Rtn Uttang Padhiar",
+        governor: "Rtn R S Srinivasan",
+        theme: "Rotary Connects the World",
+        yearShort: "2019-20",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Uttang Padhiar" },
+              { image: "image2.jpeg", caption: "Presidential handover by President Paro Patel to Rtn Uttang Padhiar" },
+              { image: "image3.jpeg", caption: "President Uttang being felicitated at a District event" },
+              { image: "image4.jpeg", caption: "Sankalp Rehabilitation Trust Annual Day: President Uttang and Rtn Muralidhar with Ravi Rao (Founder-Trustee) after presenting the cheque" },
+              { image: "image5.jpeg", caption: "Swachhata Abhiyan at Chikkabanavara Lake in conjunction with International Coastal Cleanup Day and Azadi ka Amrit Mahotsav" },
+              { image: "image6.jpeg", caption: "SHE Teams: President Uttang presents a certificate to one of the participants" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "Presidential handover: President Uttang hands over the President's collar to Rtn Muralidhar Srinivasiah" },
+              { image: "image8.jpeg", caption: "Club Changemaker Award recognition" },
+              { image: "image9.jpeg", caption: "The team that made RBHN Club Changemaker" },
+              { image: "image10.jpeg", caption: "RBHN members at a Rotary event" },
+              { image: "image11.jpeg", caption: "SHE Teams: A group photo of the participants" },
+              { image: "image12.jpeg", caption: "RBHN Members at a fellowship event" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2020-21",
+        year: "2020 – 2021",
+        president: "Rtn Muralidhar Srinivasiah",
+        governor: "Rtn Kumar Anand",
+        theme: "Rotary Opens Opportunities",
+        yearShort: "2020-21",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Muralidhar Srinivasiah" },
+              { image: "image2.jpeg", caption: "Presidential handover ceremony" },
+              { image: "image3.jpeg", caption: "President Muralidhar and Board for 2020-21" },
+              { image: "image4.jpeg", caption: "SHE Teams: President Muralidhar felicitates a participant" },
+              { image: "image5.jpeg", caption: "Presentation to Mathru School" },
+              { image: "image6.jpeg", caption: "Oxygen concentrators distributed by RBHN during the pandemic" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "Presidential handover: President Muralidhar hands over the President's collar to Rtn Piyush Samdani" },
+              { image: "image8.jpeg", caption: "Members at a club meeting" },
+              { image: "image9.jpeg", caption: "Felicitation at a district event" },
+              { image: "image10.jpeg", caption: "RBHN members volunteering at a community service project" },
+              { image: "image11.jpeg", caption: "Fellowship dinner at a member's residence" },
+              { image: "image12.jpeg", caption: "Tree plantation drive" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2021-22",
+        year: "2021 – 2022",
+        president: "Rtn Piyush Samdani",
+        governor: "Rtn J Nagaraj",
+        theme: "Serve to Change Lives",
+        yearShort: "2021-22",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Piyush Samdani" },
+              { image: "image2.jpeg", caption: "Presidential handover ceremony" },
+              { image: "image3.jpeg", caption: "President Piyush and Board for 2021-22" },
+              { image: "image4.jpeg", caption: "Blood donation camp organized by RBHN" },
+              { image: "image5.jpeg", caption: "Distribution of school supplies to underprivileged children" },
+              { image: "image6.jpeg", caption: "Tree plantation at a local park" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "Presidential handover: President Piyush hands over the President's collar to Rtn Prachi Awasthi" },
+              { image: "image8.jpeg", caption: "Community health camp" },
+              { image: "image9.jpeg", caption: "Members at a district conference" },
+              { image: "image10.jpeg", caption: "Fellowship event" },
+              { image: "image11.jpeg", caption: "Environmental awareness program" },
+              { image: "image12.jpeg", caption: "Year-end celebration" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2022-23",
+        year: "2022 – 2023",
+        president: "Rtn Prachi Awasthi",
+        governor: "Rtn Vasant Betrabet",
+        theme: "Imagine Rotary",
+        yearShort: "2022-23",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Prachi Awasthi" },
+              { image: "image2.jpeg", caption: "Presidential handover ceremony" },
+              { image: "image3.jpeg", caption: "President Prachi and Board for 2022-23" },
+              { image: "image4.jpeg", caption: "Literacy program launch" },
+              { image: "image5.jpeg", caption: "Women empowerment workshop" },
+              { image: "image6.jpeg", caption: "Community service project" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "Presidential handover: President Prachi hands over the President's collar to Rtn Trilok Gulhati" },
+              { image: "image8.jpeg", caption: "Health awareness camp" },
+              { image: "image9.jpeg", caption: "Members at a vocational visit" },
+              { image: "image10.jpeg", caption: "Fellowship dinner" },
+              { image: "image11.jpeg", caption: "Environmental project" },
+              { image: "image12.jpeg", caption: "Year-end celebration with members" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2023-24",
+        year: "2023 – 2024",
+        president: "Rtn Trilok Gulhati",
+        governor: "Rtn Prasanna S J",
+        theme: "Create Hope in the World",
+        yearShort: "2023-24",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Trilok Gulhati" },
+              { image: "image2.jpeg", caption: "Presidential handover ceremony" },
+              { image: "image3.jpeg", caption: "President Trilok and Board for 2023-24" },
+              { image: "image4.jpeg", caption: "Polio immunization drive" },
+              { image: "image5.jpeg", caption: "Educational support program" },
+              { image: "image6.jpeg", caption: "Community development project" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "Presidential handover: President Trilok hands over the President's collar to Rtn Arun Tanksali" },
+              { image: "image8.jpeg", caption: "Water conservation project" },
+              { image: "image9.jpeg", caption: "Members at a district event" },
+              { image: "image10.jpeg", caption: "Fellowship meeting" },
+              { image: "image11.jpeg", caption: "Service project" },
+              { image: "image12.jpeg", caption: "Year-end gathering" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "year-2024-25",
+        year: "2024 – 2025",
+        president: "Rtn Arun Tanksali",
+        governor: "Rtn Prof. Elizabeth Cherian",
+        theme: "The Magic of Rotary",
+        yearShort: "2024-25",
+        pages: [
+          {
+            photos: [
+              { image: "image1.jpeg", caption: "President Arun Tanksali" },
+              { image: "image2.jpeg", caption: "Presidential handover ceremony" },
+              { image: "image3.jpeg", caption: "President Arun and Board for 2024-25" },
+              { image: "image4.jpeg", caption: "10th Anniversary celebration launch" },
+              { image: "image5.jpeg", caption: "Community outreach program" },
+              { image: "image6.jpeg", caption: "Special service project for the anniversary year" }
+            ]
+          },
+          {
+            photos: [
+              { image: "image7.jpeg", caption: "10th Anniversary celebration" },
+              { image: "image8.jpeg", caption: "Members celebrating a decade of service" },
+              { image: "image9.jpeg", caption: "Legacy project unveiling" },
+              { image: "image10.jpeg", caption: "Fellowship event marking 10 years" },
+              { image: "image11.jpeg", caption: "Looking ahead to the future" },
+              { image: "image12.jpeg", caption: "Together we've made a difference" }
+            ]
+          }
+        ]
+      }
+    ];
+
+    // Generate year sections
+    function generateYearSections() {
+      const container = document.getElementById('yearSections');
+      let html = '';
+
+      yearData.forEach(yearInfo => {
+        html += `
+          <section id="${yearInfo.id}" class="year-section">
+            <div class="year-header">
+              <div class="year-badge-large">Year ${yearInfo.year}</div>
+              <div class="year-info-grid">
+                <div class="year-info-row">
+                  <span class="year-label">President:</span>
+                  <span class="year-value">${yearInfo.president}</span>
+                </div>
+                <div class="year-info-row">
+                  <span class="year-label">DG:</span>
+                  <span class="year-value">${yearInfo.governor}</span>
+                </div>
+                <div class="year-info-row">
+                  <span class="year-label">Theme:</span>
+                  <span class="year-value">${yearInfo.theme}</span>
+                </div>
+              </div>
+            </div>
+            <div class="photo-grid-mobile">
+        `;
+
+        // Add all photos from all pages for this year
+        yearInfo.pages.forEach(page => {
+          page.photos.forEach(photo => {
+            html += `
+              <div class="photo-card-mobile">
+                <img src="extracted_images/${yearInfo.yearShort}/${photo.image}" alt="${photo.caption}" loading="lazy">
+                <div class="photo-caption">${photo.caption}</div>
+              </div>
+            `;
+          });
+        });
+
+        html += `
+            </div>
+          </section>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    // Active tab highlighting on scroll
+    function updateActiveTab() {
+      const sections = document.querySelectorAll('section[id]');
+      const navTabs = document.querySelectorAll('.nav-tab');
+
+      let currentSection = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop - 150) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navTabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('href') === '#' + currentSection) {
+          tab.classList.add('active');
+          // Scroll tab into view
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      generateYearSections();
+      updateActiveTab();
+    });
+
+    // Update active tab on scroll
+    window.addEventListener('scroll', updateActiveTab);
+  </script>
+
+</body>
+</html>
