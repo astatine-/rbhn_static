@@ -1,0 +1,320 @@
+:root {
+    --r-main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --r-main-font-size: 32px;
+    --r-main-color: #fff;
+    --r-block-margin: 20px;
+    --r-heading-margin: 0 0 20px 0;
+    --r-heading-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --r-heading-color: #42affa;
+    --r-heading-font-weight: 600;
+    --r-heading1-size: 2.5em;
+    --r-heading2-size: 1.8em;
+    --r-heading3-size: 1.3em;
+    --r-link-color: #42affa;
+    --r-link-color-hover: #8dcffc;
+    --r-selection-background-color: #bee4fd;
+    --r-selection-color: #000;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.reveal {
+    background: #1a1a2e;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+    text-transform: none;
+    word-wrap: break-word;
+}
+
+.reveal section {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reveal .slide-number {
+    font-size: 14px;
+}
+
+.slide-content {
+    text-align: left;
+    max-width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Language Switcher */
+.language-switcher {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+}
+
+.language-switcher button {
+    background: rgba(66, 175, 250, 0.9);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.language-switcher button:hover {
+    background: rgba(66, 175, 250, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.lang-icon {
+    font-size: 1.2em;
+}
+
+.lang-text {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Colored boxes */
+.red-flag {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.green-check {
+    color: #51cf66;
+    font-weight: bold;
+}
+
+.highlight-box {
+    background: rgba(66, 175, 250, 0.1);
+    border-left: 4px solid #42affa;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.warning-box {
+    background: rgba(255, 107, 107, 0.1);
+    border-left: 4px solid #ff6b6b;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.cta-box {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+}
+
+/* Title slide */
+.title-slide {
+    text-align: center;
+}
+
+.title-slide h1 {
+    font-size: 3em;
+    margin-bottom: 30px;
+    color: #42affa;
+}
+
+.title-slide p {
+    font-size: 1.5em;
+    margin: 15px 0;
+}
+
+.emoji {
+    margin: 0 5px;
+}
+
+.speaker-notes {
+    font-size: 14px;
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 20px;
+}
+
+li {
+    margin: 8px 0;
+    line-height: 1.3;
+}
+
+code {
+    background: #444;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #51cf66;
+}
+
+/* Tables */
+.reveal table {
+    font-size: 0.9em;
+    margin: 20px auto;
+}
+
+.reveal table td, .reveal table th {
+    padding: 8px;
+    border: 1px solid #555;
+}
+
+/* Statistics */
+.slide-statistics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.stat-box {
+    background: rgba(81, 207, 102, 0.1);
+    border: 2px solid #51cf66;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2em;
+    color: #51cf66;
+    font-weight: bold;
+}
+
+.stat-label {
+    color: #bbb;
+    font-size: 0.85em;
+    margin-top: 8px;
+}
+
+.reveal pre {
+    width: 100%;
+    font-size: 0.55em;
+    background: #3f3f3f;
+    border: 1px solid #555;
+}
+
+.resource-link {
+    background: rgba(66, 175, 250, 0.1);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Header and Footer */
+.reveal-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #42affa;
+}
+
+.reveal-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #42affa;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.reveal-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid #42affa;
+}
+
+.reveal-footer p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #dfe8ff;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.reveal .slides {
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .reveal h1 { font-size: 1.8em; }
+    .reveal h2 { font-size: 1.3em; }
+    .reveal p, .reveal li { font-size: 0.75em; }
+    .reveal .slides { margin-top: 40px; margin-bottom: 30px; }
+    .reveal-header { height: 40px; }
+    .reveal-header h3 { font-size: 1em; }
+    .reveal-footer { height: 30px; }
+    .reveal-footer p { font-size: 0.75em; }
+    .highlight-box, .warning-box { padding: 10px; margin: 10px 0; }
+    .stat-box { padding: 15px; }
+    .slide-statistics { gap: 10px; }
+
+    .language-switcher {
+        top: 5px;
+        right: 5px;
+    }
+
+    .language-switcher button {
+        padding: 8px 15px;
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .reveal h1 { font-size: 1.5em; }
+    .reveal h2 { font-size: 1.1em; }
+    .reveal p, .reveal li { font-size: 0.7em; }
+    .slide-statistics { grid-template-columns: 1fr; }
+    .reveal-header { height: 35px; }
+    .reveal-header h3 { font-size: 0.9em; }
+}
