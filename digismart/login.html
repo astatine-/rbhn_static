@@ -298,6 +298,56 @@
                 success: true
             });
 
+            // Submit to Google Form using hidden iframe method (most reliable)
+            const submitToGoogleForm = () => {
+                try {
+                    // Create hidden iframe for form submission
+                    let iframe = document.querySelector('iframe[name="hidden_iframe"]');
+                    if (!iframe) {
+                        iframe = document.createElement('iframe');
+                        iframe.name = 'hidden_iframe';
+                        iframe.style.display = 'none';
+                        document.body.appendChild(iframe);
+                    }
+
+                    // Create form dynamically
+                    const gform = document.createElement('form');
+                    gform.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfAaLI5tlEH-2-VJSBePCE0qfj3K_K6EwR_w2RIG1R6jOSAWw/formResponse';
+                    gform.method = 'POST';
+                    gform.target = 'hidden_iframe';
+
+                    // Only add fields that have values (skip empty ones)
+                    const fields = [];
+                    if (email) fields.push({ name: 'entry.596458605', value: email });
+                    if (phone) fields.push({ name: 'entry.1383428805', value: phone });
+                    fields.push({ name: 'entry.708001793', value: localStorage.getItem('digismart-lang') || 'en' });
+
+                    fields.forEach(field => {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = field.name;
+                        input.value = field.value;
+                        gform.appendChild(input);
+                    });
+
+                    // Add form to document and submit
+                    document.body.appendChild(gform);
+                    gform.submit();
+
+                    // Clean up after submission
+                    setTimeout(() => {
+                        document.body.removeChild(gform);
+                    }, 1000);
+
+                    console.log('Contact info submitted to Google Forms');
+                } catch (err) {
+                    console.error('Form submission error:', err);
+                }
+            };
+
+            // Submit form
+            submitToGoogleForm();
+
             // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Redirecting...';

@@ -15,9 +15,9 @@
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 			gtag('config', 'GA_MEASUREMENT_ID', {
-				page_title: '{{title}}',
+				page_title: 'ಡಿಜಿಟಲ್ ಹಣಕಾಸು ಸುರಕ್ಷತೆ',
 				page_location: window.location.href,
-				language: '{{language}}',
+				language: 'kn',
 				content_group: 'desktop_presentation'
 			});
 		</script>
@@ -49,7 +49,7 @@
 					if (typeof gtag !== 'undefined') {
 						gtag('event', 'authenticated_access', {
 							user_type: parsed.email ? 'email' : 'phone',
-							language: '{{language}}',
+							language: 'kn',
 							version: 'desktop'
 						});
 					}
@@ -73,7 +73,7 @@
 			</div>
 
 			<div class="reveal-header">
-				<h3>{{title}}</h3>
+				<h3>ಡಿಜಿಟಲ್ ಹಣಕಾಸು ಸುರಕ್ಷತೆ</h3>
 			</div>
 
 			<div class="reveal-footer">
@@ -691,7 +691,7 @@
 					slide_title: slideTitle,
 					slide_type: slideType,
 					slide_index: event.indexh,
-					language: '{{language}}'
+					language: 'kn'
 				});
 			});
 
@@ -699,14 +699,14 @@
 			Reveal.on('ready', event => {
 				gtag('event', 'presentation_ready', {
 					total_slides: Reveal.getTotalSlides(),
-					language: '{{language}}'
+					language: 'kn'
 				});
 			});
 
 			function switchLanguage(lang) {
 				// Track language switch
 				gtag('event', 'language_switch', {
-					from: '{{language}}',
+					from: 'kn',
 					to: lang,
 					version: 'desktop'
 				});
