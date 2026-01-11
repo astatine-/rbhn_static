@@ -7,6 +7,59 @@
     <meta name="mobile-web-app-capable" content="yes">
     <title>Digital Financial Security in India</title>
     <link rel="stylesheet" href="styles/mobile.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            page_title: 'Digital Financial Security in India',
+            page_location: window.location.href,
+            language: 'en',
+            content_group: 'mobile_presentation'
+        });
+    </script>
+
+    <!-- Authentication Check -->
+    <script>
+        (function() {
+            // Check authentication
+            const authData = localStorage.getItem('digismart-auth');
+
+            if (!authData) {
+                // Not authenticated, redirect to login
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                const parsed = JSON.parse(authData);
+
+                // Check if expired
+                if (parsed.expiresAt < Date.now()) {
+                    // Expired, clear and redirect
+                    localStorage.removeItem('digismart-auth');
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                // Track returning user
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'authenticated_access', {
+                        user_type: parsed.email ? 'email' : 'phone',
+                        language: 'en',
+                        version: 'mobile'
+                    });
+                }
+            } catch (e) {
+                // Invalid auth data, redirect to login
+                localStorage.removeItem('digismart-auth');
+                window.location.href = 'login.html';
+            }
+        })();
+    </script>
 </head>
 <body>
     <!-- Fixed Header -->
@@ -47,10 +100,11 @@
                     </div>
                     <div class="card-content">
                         <p><strong>Statistics (2023):</strong></p>
-<ul><li>$1.1T in Digital Payments</li>
-<li>450M+ Digital Wallet Users</li>
-<li>350K+ Cyber Complaints Registered</li>
-<li>₹50K-5L Average Loss per Victim</li></ul>
+<ul><li>228 Billion Digital Payments  using UPI</li>
+<li>678M+ QR Codes</li>
+<li>FASTag : 2.32 Billion Transactions</li>
+<li>Metro Cards booming</li>
+<li>Credit-on-UPI coming next!</li></ul>
                     </div>
                     
                     
@@ -72,7 +126,7 @@
 <li><strong>Safety:</strong> Avoids loss due to damage</li>
 <li><strong>Safety (when done right):</strong> Less physical theft</li>
 <li></li></ul>
-<p>⚠️ <strong>Goal:</strong> Enjoy digital benefits while staying protected</p>
+<p>⚠️ <strong>Goal:</strong> Goal: Enjoy digital conveniences while staying protected</p>
                     </div>
                     
                     
@@ -86,10 +140,10 @@
                         <h3>Password Categories</h3>
                     </div>
                     <div class="card-content">
-                        <p>Three levels of password security:</p>
-<ul><li><strong>HIGHEST-RISK:</strong> Banking, Finance, Email, Key digital services → 16+ characters, unique</li>
-<li><strong>HIGH-RISK:</strong> social media, quasi-social (mygate, adda) → 12+ characters</li>
-<li><strong>MEDIUM-RISK:</strong> Utility services (zomato, amazon, makemytrip, etc) → 12+ characters</li>
+                        <p>Four levels of password security:</p>
+<ul><li><strong>HIGHEST-RISK:</strong> Banking, Investments, Passport, Email, Key digital services → 16+ characters, unique</li>
+<li><strong>HIGH-RISK:</strong> Social media, quasi-social (mygate, adda), Job portals, Health care services → 12+ characters</li>
+<li><strong>MEDIUM-RISK:</strong> Utility services (zomato, amazon, makemytrip, etc), Uber, Coursera, .. → 12+ characters</li>
 <li><strong>LOW-RISK:</strong> Streaming, news → Simpler is okay</li></ul>
                     </div>
                     
@@ -105,7 +159,7 @@
                     </div>
                     <div class="card-content">
                         <p>❌ NEVER Use:</p>
-<ul><li>password123, name+year, birthday, phone number</li>
+<ul><li>password123, name+year, birthday (self, family), phone number</li>
 <li>Same password everywhere</li>
 <li>Sequential patterns</li></ul>
                     </div>
@@ -172,7 +226,7 @@
 <li>Cannot be phished or stolen</li>
 <li>Supported by Google, Apple, some banks</li>
 <li>Check: Settings → Passkey/Passwordless</li></ul>
-<p>🎯 <strong>ACTION: Enable 2FA on your bank account TODAY</strong></p>
+<p>🎯 <strong>ACTION: : Enable 2FA on your HIGHEST and HIGH category services TODAY</strong></p>
                     </div>
                     
                     <div class="card-action">
@@ -192,7 +246,7 @@
                 <article class="card card-content" data-card-index="8">
                     <div class="card-header">
                         <span class="card-icon">⚠️</span>
-                        <h2>Financial Traps - Overview</h2>
+                        <h2>Financial Traps and Scams</h2>
                         
                     </div>
                     <div class="card-content">
@@ -200,13 +254,12 @@
                     <h3>Main Categories</h3>
                     <p><strong>1️⃣ PHISHING & FAKE COMMUNICATIONS</strong></p>
 <p>Fake emails, SMS, WhatsApp | Links to fake websites | Impersonation</p>
-<p><strong>2️⃣ SOCIAL ENGINEERING</strong></p>
-<p>Psychological manipulation | Creating urgency and fear | Fake authority</p>
-<p><strong>3️⃣ TECHNICAL ATTACKS</strong></p>
+<p><strong>2️⃣ TECHNICAL ATTACKS</strong></p>
 <p>Screen sharing | Malicious APKs | Fake websites/apps</p>
-<p><strong>4️⃣ PAYMENT MANIPULATION</strong></p>
-<p>OTP extraction | UPI reversals | Courier scams</p>
-<p><strong>Next slides: Real examples of each type</strong></p>
+<p><strong>3️⃣ SOCIAL ENGINEERING</strong></p>
+<p>Psychological manipulation | Creating urgency and fear | Fake authority | OTP extraction | UPI reversals | Courier scams</p>
+<p><strong>4️⃣ Artifical Intelligence</strong></p>
+<p>Next frontier</p>
                 
                     </div>
                     
@@ -214,7 +267,7 @@
                 </article>
             
 
-                <article class="card card-warning" data-card-index="9">
+                <article class="card card-action" data-card-index="9">
                     <div class="card-header">
                         <span class="card-icon">📧</span>
                         <h2>Phishing - Email Scams</h2>
@@ -235,7 +288,7 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="10">
+                <article class="card card-warning" data-card-index="10">
                     <div class="card-header">
                         <span class="card-icon">📧</span>
                         <h2>Protection</h2>
@@ -246,7 +299,7 @@
 <ul><li>NEVER click links in emails</li>
 <li>Open banking app directly</li>
 <li>Real banks use .bank.in domains</li>
-<li>Call bank using number on YOUR card</li></ul>
+<li>Call bank using number on YOUR card or your Relationship Manager</li></ul>
                     </div>
                     
                     
@@ -260,12 +313,12 @@
                         <h3>Common SMS Scams</h3>
                     </div>
                     <div class="card-content">
-                        <p><strong>Fake UPI:</strong> "Payment of ₹25,000 failed. Click to retry"</p>
-<p>🚩 Shortened URL, creates panic</p>
-<p><strong>Account Lock:</strong> "Account locked. Verify now: [link]"</p>
+                        <p><strong>Account Lock:</strong> "Account locked. Verify now: [link]"</p>
 <p>🚩 Sent from mobile number (banks use 6-char IDs)</p>
 <p><strong>Prize/Lottery:</strong> "Won ₹50,000. Claim here"</p>
 <p>🚩 You didn't enter any lottery</p>
+<p><strong>Call forwarding:</strong> "Dial **21984xxx11# to allow delivery" → </p>
+<p>🚩 Number starts or ends with * or #</p>
                     </div>
                     
                     
@@ -275,15 +328,15 @@
                 <article class="card card-action" data-card-index="12">
                     <div class="card-header">
                         <span class="card-icon">📱</span>
-                        <h2>How to Verify</h2>
+                        <h2>Protection</h2>
                         
                     </div>
                     <div class="card-content">
-                        <p>✅ Real vs Fake:</p>
-<ul><li>Real banks SMS from 6-character IDs ("HDFC", "ICICI")</li>
-<li>NOT from 10-digit mobile numbers</li>
+                        <p>✅ How to Stay Safe:</p>
+<ul><li>Banks don't send from regular 10 digit number (banks use XX-ICICIT-S or XX-AXISBK-T)</li>
 <li>Never click links in SMS</li>
-<li>Check app directly if concerned</li></ul>
+<li>NEVE dial numbers sent from unknown SMS</li>
+<li>Real banks SMS from 6-character IDs ("HDFC", "ICICI")</li></ul>
                     </div>
                     
                     
@@ -293,7 +346,7 @@
                 <article class="card card-warning" data-card-index="13">
                     <div class="card-header">
                         <span class="card-icon">🟢</span>
-                        <h2>WhatsApp Scams - Part 1</h2>
+                        <h2>Technical Attacks - WhatsApp Scams</h2>
                         <h3>Hacked Contact Scam</h3>
                     </div>
                     <div class="card-content">
@@ -309,34 +362,18 @@
                 <article class="card card-warning" data-card-index="14">
                     <div class="card-header">
                         <span class="card-icon">🟢</span>
-                        <h2>Investment Groups</h2>
+                        <h2>APK Files - EXTREMELY DANGEROUS</h2>
                         
                     </div>
                     <div class="card-content">
                         <p><strong>The Setup:</strong></p>
-<p>"Stock Tips - 100% Returns" group → 50-100 fake members → Fake success stories → Invest ₹1L → App disappears</p>
+<p>"Download app to register for lucky draw" </p>
+<p>"Download app for cashback" </p>
+<p>    → Install APK file </p>
+<p>    → Spyware reads passwords, captures OTPs, steals contacts</p>
 <p><strong>Protection:</strong></p>
-<ul><li>Exit unsolicited groups immediately</li>
-<li>Check SEBI.gov.in before investing</li>
-<li>All group members are fake accounts</li></ul>
-<p>✅ <strong>Family Codeword:</strong> Establish secret word for money requests. If they don't say it = scam</p>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-warning" data-card-index="15">
-                    <div class="card-header">
-                        <span class="card-icon">🟢</span>
-                        <h2>WhatsApp Scams - Part 2</h2>
-                        <h3>APK Files - EXTREMELY DANGEROUS</h3>
-                    </div>
-                    <div class="card-content">
-                        <p><strong>How it works:</strong></p>
-<p>"Download app for cashback" → Install APK file → <strong>Spyware reads passwords, captures OTPs, steals contacts</strong></p>
-<p><strong>Protection:</strong></p>
-<ul><li>NEVER install APK files from WhatsApp</li>
+<p>✅ How to Stay Safe:</p>
+<ul><li>NEVER click on APK files, even from friends</li>
 <li>Only use Play Store/App Store</li>
 <li>Android: Settings → Security → Unknown Sources → <strong>DISABLE</strong></li></ul>
                     </div>
@@ -345,34 +382,16 @@
                 </article>
             
 
-                <article class="card card-warning" data-card-index="16">
-                    <div class="card-header">
-                        <span class="card-icon">🟢</span>
-                        <h2>Call Forwarding Trap</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p><strong>The Scam:</strong></p>
-<p>Scammer: "Dial <em>401</em>[number]#" → Forwards ALL your calls/OTPs to scammer</p>
-<p><strong>Protection:</strong></p>
-<ul><li>NEVER dial <em>codes</em> someone tells you</li>
-<li>Check if forwarding is active: *#21#</li>
-<li>Disable any forwarding: ##21#</li></ul>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-warning" data-card-index="17">
+                <article class="card card-warning" data-card-index="15">
                     <div class="card-header">
                         <span class="card-icon">💻</span>
-                        <h2>Screen Sharing Scams</h2>
+                        <h2>Technical Attacks - Screen Sharing Scams</h2>
                         <h3>How It Works</h3>
                     </div>
                     <div class="card-content">
                         <p><strong>The Process:</strong></p>
-<p>1. "Install AnyDesk to process refund"</p>
+<p>Could start via SMS, WhatsApp or even a phone call</p>
+<p>1. "Install AnyDesk to process refund" or an app you are not familiar with</p>
 <p>2. You install (legitimate app)</p>
 <p>3. You give access code</p>
 <p>4. They SEE and CONTROL your phone</p>
@@ -384,14 +403,15 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="18">
+                <article class="card card-action" data-card-index="16">
                     <div class="card-header">
                         <span class="card-icon">💻</span>
                         <h2>The Truth</h2>
                         
                     </div>
                     <div class="card-content">
-                        <p>🛑 <strong>REALITY CHECK:</strong></p>
+                        <p><strong>Protection:</strong></p>
+<p>✅ How to Stay Safe:</p>
 <ul><li>Banks NEVER ask for screen sharing</li>
 <li>E-commerce NEVER needs remote access</li>
 <li>Delivery companies DON'T use these apps</li></ul>
@@ -402,51 +422,10 @@
                 </article>
             
 
-                <article class="card card-warning" data-card-index="19">
-                    <div class="card-header">
-                        <span class="card-icon">🌐</span>
-                        <h2>Fake Websites - Perfect Forgeries</h2>
-                        <h3>Real vs Fake</h3>
-                    </div>
-                    <div class="card-content">
-                        <p><strong>Examples:</strong></p>
-<ul><li>✓ hdfcbank.bank.in = REAL</li>
-<li>❌ hdfc-bank.com = FAKE</li>
-<li>❌ hdfcbank-secure.net = FAKE</li>
-<li>❌ hdfcbank.co.in = FAKE</li></ul>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-action" data-card-index="20">
-                    <div class="card-header">
-                        <span class="card-icon">🌐</span>
-                        <h2>How to Spot Fake Sites</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p>✅ <strong>Red Flags to Check:</strong></p>
-<ul><li>Check URL BEFORE entering password</li>
-<li>🚩 Extra hyphens (hdfc-bank)</li>
-<li>🚩 Wrong extension (.com instead of .bank.in)</li>
-<li>🚩 Misspellings (hdfc-bnk.com)</li></ul>
-<p><strong>Protection:</strong></p>
-<ul><li>Type URL yourself (don't click links)</li>
-<li>Use banking apps (safer than websites)</li>
-<li>Real bank domains end in .bank.in</li>
-<li>Government sites: .gov.in only</li></ul>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-warning" data-card-index="21">
+                <article class="card card-warning" data-card-index="17">
                     <div class="card-header">
                         <span class="card-icon">🔢</span>
-                        <h2>OTP Trap - #1 Scam in India</h2>
+                        <h2>Social Engineering - OTP Trap - #1 Scam in India</h2>
                         <h3>How It Works</h3>
                     </div>
                     <div class="card-content">
@@ -463,14 +442,15 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="22">
+                <article class="card card-action" data-card-index="18">
                     <div class="card-header">
                         <span class="card-icon">🔢</span>
                         <h2>The Absolute Truth</h2>
                         
                     </div>
                     <div class="card-content">
-                        <p>🛑 <strong>CRITICAL:</strong></p>
+                        <p><strong>Protection:</strong></p>
+<p>✅ How to Stay Safe:</p>
 <p>Banks will NEVER ask for OTP. Not on phone, not via email, NEVER EVER.</p>
 <p><strong>Safe to Share OTPs:</strong></p>
 <p>✓ Food delivery</p>
@@ -482,46 +462,10 @@
                 </article>
             
 
-                <article class="card card-warning" data-card-index="23">
-                    <div class="card-header">
-                        <span class="card-icon">📦</span>
-                        <h2>Courier / Digital Arrest Scam</h2>
-                        <h3>How It Works</h3>
-                    </div>
-                    <div class="card-content">
-                        <p><strong>The Setup:</strong></p>
-<ul><li><strong>Stage 1:</strong> Digital arrest call → Transfer ₹2,00,000</li>
-<li><strong>Stage 2:</strong> "Courier will collect documents"</li>
-<li><strong>Next day:</strong> Real courier arrives → Collects Aadhaar, PAN, passport + ₹75,000 cash</li>
-<li><strong>Result:</strong> ₹2,75,000 lost + identity theft</li></ul>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-action" data-card-index="24">
-                    <div class="card-header">
-                        <span class="card-icon">📦</span>
-                        <h2>Protection</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p>✅ <strong>Reality Check:</strong></p>
-<ul><li>Government doesn't arrest via courier</li>
-<li>Never give original documents to couriers</li>
-<li>If threatened with arrest → Visit police station yourself</li>
-<li>No legitimate government agency works this way</li></ul>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-warning" data-card-index="25">
+                <article class="card card-warning" data-card-index="19">
                     <div class="card-header">
                         <span class="card-icon">💸</span>
-                        <h2>UPI Mistaken Transfer Scam</h2>
+                        <h2>Social Engineering - UPI Mistake Scam</h2>
                         <h3>How It Works</h3>
                     </div>
                     <div class="card-content">
@@ -537,14 +481,15 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="26">
+                <article class="card card-action" data-card-index="20">
                     <div class="card-header">
                         <span class="card-icon">💸</span>
                         <h2>Protection</h2>
                         
                     </div>
                     <div class="card-content">
-                        <p>✅ <strong>How to Stay Safe:</strong></p>
+                        <p><strong>Protection:</strong></p>
+<p>✅ How to Stay Safe:</p>
 <ul><li><strong>NEVER return unexpected money immediately</strong></li>
 <li>Wait 24-48 hours for settlement</li>
 <li>Check actual bank balance (not just notification)</li>
@@ -556,57 +501,17 @@
                 </article>
             
 
-                <article class="card card-warning" data-card-index="27">
-                    <div class="card-header">
-                        <span class="card-icon">💰</span>
-                        <h2>Investment Scams - Exploiting Greed</h2>
-                        <h3>The Setup</h3>
-                    </div>
-                    <div class="card-content">
-                        <p><strong>The Trap:</strong></p>
-<p>"Turn ₹10,000 into ₹1 lakh in 90 days - Guaranteed!"</p>
-<p><strong>The Process:</strong></p>
-<p>WhatsApp group → Fake members → Small profit (₹2K on ₹10K) → Trust built → Invest ₹1L → App disappears</p>
-<p>🚩 <strong>Red Flags:</strong></p>
-<ul><li>Guaranteed returns 30%+</li>
-<li>Not SEBI-registered</li>
-<li>WhatsApp/Telegram groups</li>
-<li>Celebrity deepfake endorsements</li></ul>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-action" data-card-index="28">
-                    <div class="card-header">
-                        <span class="card-icon">💰</span>
-                        <h2>Real Cases & Protection</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p><strong>Real Losses:</strong></p>
-<ul><li>Bengaluru woman: ₹32 CRORE loss</li>
-<li>Mumbai couple: ₹50.5 lakh loss</li></ul>
-<p>✅ <strong>Protection:</strong></p>
-<ul><li>Check SEBI.gov.in BEFORE investing</li>
-<li>No legitimate investment guarantees returns</li>
-<li>First profit is BAIT paid by scammer</li></ul>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-warning" data-card-index="29">
+                <article class="card card-warning" data-card-index="21">
                     <div class="card-header">
                         <span class="card-icon">🚨</span>
-                        <h2>Digital Arrest - Exploiting Fear</h2>
+                        <h2>Social Engineering - Digital Arrest</h2>
                         <h3>The Setup</h3>
                     </div>
                     <div class="card-content">
                         <p><strong>Initial Contact:</strong></p>
 <p>"CBI. You're involved in money laundering. Arrest warrant issued."</p>
+<p>“Customs: A package sent by you has drugs”</p>
+<p>“Police: Your son has been arrested”</p>
 <p><strong>The Stages:</strong></p>
 <p>1. Call creating fear: "Arrest in 24 hours"</p>
 <p>2. Video call: Fake police uniform, fake documents</p>
@@ -618,7 +523,7 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="30">
+                <article class="card card-action" data-card-index="22">
                     <div class="card-header">
                         <span class="card-icon">🚨</span>
                         <h2>The Truth</h2>
@@ -627,7 +532,7 @@
                     <div class="card-content">
                         <p>🛑 <strong>REALITY:</strong></p>
 <ul><li>❌ Police DON'T arrest via phone/video</li>
-<li>❌ No "digital arrest" app exists</li>
+<li>❌ No "digital arrest" provision exists</li>
 <li>❌ Government DOESN'T ask for money</li>
 <li>✓ Real police come with warrant</li></ul>
 <p><strong>If you get such call: Hang up → Go to police station → File complaint</strong></p>
@@ -637,7 +542,7 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="31">
+                <article class="card card-action" data-card-index="23">
                     <div class="card-header">
                         <span class="card-icon">🛡️</span>
                         <h2>3 Rules = 90% Protection</h2>
@@ -653,7 +558,7 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="32">
+                <article class="card card-action" data-card-index="24">
                     <div class="card-header">
                         <span class="card-icon">🛡️</span>
                         <h2>RULE 2: DON'T ACT ON MESSAGES</h2>
@@ -669,7 +574,7 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="33">
+                <article class="card card-action" data-card-index="25">
                     <div class="card-header">
                         <span class="card-icon">🛡️</span>
                         <h2>RULE 3: DON'T INSTALL UNKNOWN APPS</h2>
@@ -685,29 +590,128 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="34">
+                <article class="card card-action" data-card-index="26">
+                    <div class="card-header">
+                        <span class="card-icon">🛡️</span>
+                        <h2>AI and Deepfakes</h2>
+                        <h3>AI-generated fake video/audio that looks/sounds 100% real</h3>
+                    </div>
+                    <div class="card-content">
+                        
+                    </div>
+                    
+                    
+                </article>
+            
+
+                <article class="card card-warming" data-card-index="27">
+                    <div class="card-header">
+                        <span class="card-icon">🛡️</span>
+                        <h2>Only 30 seconds of voice needed to clone perfectly</h2>
+                        
+                    </div>
+                    <div class="card-content">
+                        
+                    </div>
+                    
+                    
+                </article>
+            
+
+                <article class="card card-action" data-card-index="28">
+                    <div class="card-header">
+                        <span class="card-icon">🛡️</span>
+                        <h2>Mumbai Mother (₹80K):</h2>
+                        
+                    </div>
+                    <div class="card-content">
+                        <p>Call from "son" - voice EXACTLY matched. "Arrested in Dubai, need bail." Son was safe at home.</p>
+                    </div>
+                    
+                    
+                </article>
+            
+
+                <article class="card card-action" data-card-index="29">
+                    <div class="card-header">
+                        <span class="card-icon">🛡️</span>
+                        <h2>Delhi Officer (₹1L):</h2>
+                        
+                    </div>
+                    <div class="card-content">
+                        <p>Call from “boss” - perfect match. “Send gift evouchers of 1 Lakh to this email id immediately”. Real boss on vacation, knew nothing.</p>
+                    </div>
+                    
+                    
+                </article>
+            
+
+                <article class="card card-action" data-card-index="30">
+                    <div class="card-header">
+                        <span class="card-icon">🛡️</span>
+                        <h2>Celebrity Deepfakes:</h2>
+                        
+                    </div>
+                    <div class="card-content">
+                        <p>Fake Mukesh Ambani, Virat Kohli promoting scam apps</p>
+                    </div>
+                    
+                    
+                </article>
+            
+
+                <article class="card card-action" data-card-index="31">
+                    <div class="card-header">
+                        <span class="card-icon">🛡️</span>
+                        <h2>⚠️ The Reality: Video/voice can NO LONGER be trusted alone</h2>
+                        
+                    </div>
+                    <div class="card-content">
+                        <p>Combined with Social Engineering, it can create new forms of scams</p>
+                    </div>
+                    
+                    
+                </article>
+            
+
+                <article class="card card-action" data-card-index="32">
+                    <div class="card-header">
+                        <span class="card-icon">🛡️</span>
+                        <h2>Advanced Protection</h2>
+                        
+                    </div>
+                    <div class="card-content">
+                        
+                    <h3>Assume you will slip up some day.</h3>
+                    
+                
+
+                    <h3>And do something you are not supposed to.</h3>
+                    <p># What MORE do you need to do to STILL remain protected?</p>
+                
+                    </div>
+                    
+                    
+                </article>
+            
+
+                <article class="card card-action" data-card-index="33">
                     <div class="card-header">
                         <span class="card-icon">🔒</span>
-                        <h2>Advanced Protection</h2>
+                        <h2>Four Advanced Steps</h2>
                         <h3>Separate Bank Accounts</h3>
                     </div>
                     <div class="card-content">
                         <p><strong>Strategy:</strong></p>
-<p>Main (₹5L) - minimal activity | Secondary (₹20K) - UPI/shopping</p>
-<p><strong>Benefit:</strong> If compromised, only ₹20K at risk</p>
+<p>Main  - minimal digital activity | Secondary (~₹20K-50K) - UPI/shopping</p>
+<p><strong>Benefit:</strong> If compromised, only ₹20K-50K at risk</p>
                     </div>
                     
                     
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
                 </article>
             
 
-                <article class="card card-action" data-card-index="35">
+                <article class="card card-action" data-card-index="34">
                     <div class="card-header">
                         <span class="card-icon">🔒</span>
                         <h2>Set Transaction Limits</h2>
@@ -715,21 +719,15 @@
                     </div>
                     <div class="card-content">
                         <p><strong>Settings:</strong></p>
-<p>UPI limit: ₹5-10K (not ₹1L) | Card: ₹10-20K</p>
+<p>UPI limit: ₹5-10K (not ₹1L) | Card: ₹10-50K</p>
 <p><strong>How:</strong> Banking app → Settings → Limits</p>
                     </div>
                     
                     
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
                 </article>
             
 
-                <article class="card card-action" data-card-index="36">
+                <article class="card card-action" data-card-index="35">
                     <div class="card-header">
                         <span class="card-icon">🔒</span>
                         <h2>Family Secret Phrase</h2>
@@ -743,201 +741,28 @@
                     </div>
                     
                     
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
+                </article>
+            
+
+                <article class="card card-action" data-card-index="36">
+                    <div class="card-header">
+                        <span class="card-icon">🔒</span>
+                        <h2>You don't call me, I will call you</h2>
+                        
                     </div>
-                
+                    <div class="card-content">
+                        <p>Slightest suspicion, hang up</p>
+<p>Call back <strong>from address book</strong></p>
+                    </div>
+                    
+                    
                 </article>
             
 
                 <article class="card card-action" data-card-index="37">
                     <div class="card-header">
-                        <span class="card-icon">🔒</span>
-                        <h2>Monthly Checks</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p><strong>Regular Tasks:</strong></p>
-<ul><li>[ ] Review bank statements</li>
-<li>[ ] Enable transaction alerts</li>
-<li>[ ] Check credit report</li></ul>
-                    </div>
-                    
-                    
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
-                </article>
-            
-
-                <article class="card card-definition" data-card-index="38">
-                    <div class="card-header">
-                        <span class="card-icon">🤖</span>
-                        <h2>AI Deepfakes - The New Threat</h2>
-                        <h3>What Are Deepfakes?</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>AI-generated fake video/audio that looks/sounds 100% real</p>
-<p>Only 30 seconds of voice needed to clone perfectly</p>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-warning" data-card-index="39">
-                    <div class="card-header">
-                        <span class="card-icon">🤖</span>
-                        <h2>Real Indian Cases (2024)</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p><strong>Mumbai Mother (₹80K):</strong></p>
-<p>Call from "son" - voice EXACTLY matched. "Arrested in Dubai, need bail." Son was safe at home.</p>
-<p><strong>Delhi Officer (₹74K):</strong></p>
-<p>VIDEO call showing "niece" - perfect match. Real niece at work, knew nothing.</p>
-<p><strong>Celebrity Deepfakes:</strong></p>
-<p>Fake Mukesh Ambani, Virat Kohli promoting scam apps</p>
-<p>⚠️ <strong>The Reality:</strong> Video/voice can NO LONGER be trusted alone | 83% of Indians affected by AI voice scams (2023)</p>
-                    </div>
-                    
-                    
-                </article>
-            
-
-                <article class="card card-definition" data-card-index="40">
-                    <div class="card-header">
-                        <span class="card-icon">🛡️</span>
-                        <h2>Deepfake Protection</h2>
-                        <h3>How to Spot</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>🚩 <strong>Video Signs:</strong></p>
-<p>Lip sync issues | Unnatural blinking | Hair edges blurry | Weird shadows</p>
-<p>🚩 <strong>Audio Signs:</strong></p>
-<p>Unusual pauses | Robotic tone | Inconsistent quality</p>
-<p>🚩 <strong>Behavioral Signs:</strong></p>
-<p>Out of character | Urgency | Can't verify | Avoiding questions</p>
-                    </div>
-                    
-                    
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
-                </article>
-            
-
-                <article class="card card-action" data-card-index="41">
-                    <div class="card-header">
-                        <span class="card-icon">🛡️</span>
-                        <h2>Protection Steps</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p><strong>5-Step Defense:</strong></p>
-<p>1. STOP - Don't send money</p>
-<p>2. CALL person using number YOU know</p>
-<p>3. ASK personal questions only they'd know</p>
-<p>4. <strong>USE family codeword (defeats ALL deepfakes!)</strong></p>
-<p>5. CHECK detection tools: deepware.ai (video), resemble.ai (audio)</p>
-<p>🔑 <strong>Family codeword is now ESSENTIAL, not optional</strong></p>
-                    </div>
-                    
-                    <div class="card-action">
-                        <a href="#" class="action-button" target="_blank">Set Family Codeword</a>
-                    </div>
-                
-                    
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
-                </article>
-            
-
-                <article class="card card-action" data-card-index="42">
-                    <div class="card-header">
-                        <span class="card-icon">⚡</span>
-                        <h2>If You Suspect Fraud</h2>
-                        <h3>Immediate Actions</h3>
-                    </div>
-                    <div class="card-content">
-                        <p><strong>First Steps:</strong></p>
-<p>1. [ ] Login to bank app (NOT via link) - check balance/transactions</p>
-<p>2. [ ] Disable/reduce limits - Block card OR reduce to ₹100</p>
-<p>3. [ ] Call bank - Number on YOUR card (not from email/Google)</p>
-                    </div>
-                    
-                    
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
-                </article>
-            
-
-                <article class="card card-warning" data-card-index="43">
-                    <div class="card-header">
-                        <span class="card-icon">⚡</span>
-                        <h2>Timing = Recovery</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p><strong>Recovery Rates:</strong></p>
-<ul><li><strong>Within 1 hour:</strong> Card 80-90% | UPI 20-30%</li>
-<li><strong>After 24 hours:</strong> Card 70% | UPI 5-10%</li>
-<li><strong>After 1 week:</strong> <5% (money gone)</li></ul>
-                    </div>
-                    
-                    
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
-                </article>
-            
-
-                <article class="card card-action" data-card-index="44">
-                    <div class="card-header">
-                        <span class="card-icon">⚡</span>
-                        <h2>If Money Gone</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p><strong>Critical Steps:</strong></p>
-<ul><li>[ ] Within 1 hr: Call bank, report fraud</li>
-<li>[ ] Within 24 hrs: cybercrime.gov.in complaint</li>
-<li>[ ] Within 48 hrs: Police FIR (needed for claims)</li></ul>
-                    </div>
-                    
-                    
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
-                </article>
-            
-
-                <article class="card card-action" data-card-index="45">
-                    <div class="card-header">
                         <span class="card-icon">🏛️</span>
-                        <h2>Government Initiatives (2024-25) - Part 1</h2>
+                        <h2>Government Initiatives</h2>
                         <h3>Trusted Bank Domains (.bank.in)</h3>
                     </div>
                     <div class="card-content">
@@ -950,7 +775,7 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="46">
+                <article class="card card-action" data-card-index="38">
                     <div class="card-header">
                         <span class="card-icon">🏛️</span>
                         <h2>SMS Sender ID (TRAI)</h2>
@@ -966,37 +791,30 @@
                 </article>
             
 
-                <article class="card card-action" data-card-index="47">
+                <article class="card card-action" data-card-index="39">
                     <div class="card-header">
                         <span class="card-icon">🏛️</span>
-                        <h2>National Cyber Crime Helpline</h2>
+                        <h2>Bank Calls from 1600</h2>
                         
                     </div>
                     <div class="card-content">
-                        <p>📞 <strong>155260</strong></p>
-<ul><li>Call for immediate fraud</li>
-<li>Real-time coordination with banks</li>
-<li>24/7 | Free</li></ul>
-<p><strong>ACTION: Save 155260 NOW as "Cyber Fraud Helpline"</strong></p>
+                        <ul><li>All calls from banks will come from numbers starting with 1600-…</li>
+<li>Assume all other numbers to be not banks</li>
+<li></li></ul>
                     </div>
                     
-                    <div class="card-action">
-                        <a href="#" class="action-button" target="_blank">Save 155260 Now</a>
-                    </div>
-                
                     
                 </article>
             
 
-                <article class="card card-action" data-card-index="48">
+                <article class="card card-content" data-card-index="40">
                     <div class="card-header">
                         <span class="card-icon">🏛️</span>
-                        <h2>Government Initiatives - Part 2</h2>
-                        <h3>Sanchar Saathi Portal</h3>
+                        <h2>sancharsaathi.gov.in</h2>
+                        
                     </div>
                     <div class="card-content">
-                        <p><strong>sancharsaathi.gov.in</strong></p>
-<ul><li>Check SIM cards registered in YOUR name</li>
+                        <ul><li>Check SIM cards registered in YOUR name</li>
 <li>Block fraudulent SIMs</li>
 <li>Takes 5 minutes</li>
 <li>Prevents identity-based fraud</li></ul>
@@ -1004,27 +822,17 @@
                     </div>
                     
                     
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
                 </article>
             
 
-                <article class="card card-action" data-card-index="49">
+                <article class="card card-action" data-card-index="41">
                     <div class="card-header">
-                        <span class="card-icon">🏛️</span>
-                        <h2>Chakshu Portal (TRAI)</h2>
-                        
+                        <span class="card-icon">⚡</span>
+                        <h2>If You Suspect Fraud</h2>
+                        <h3>Immediate Actions</h3>
                     </div>
                     <div class="card-content">
-                        <p><strong>chakshu.trai.gov.in</strong></p>
-<ul><li>Report scam calls/SMS</li>
-<li>AI detects patterns</li>
-<li>Network-wide blocking</li>
-<li>Your report helps protect everyone in India</li></ul>
+                        
                     </div>
                     
                     
@@ -1037,23 +845,18 @@
                 </article>
             
 
-                <article class="card card-reference" data-card-index="50">
+                <article class="card card-action" data-card-index="42">
                     <div class="card-header">
-                        <span class="card-icon">🏛️</span>
-                        <h2>Numbers to Save</h2>
+                        <span class="card-icon">⚡</span>
+                        <h2>Check Bank Account</h2>
                         
                     </div>
                     <div class="card-content">
-                        <p><strong>Save These:</strong></p>
-<ul><li>[ ] 155260 - Cyber Fraud Helpline</li>
-<li>[ ] 1909 - TRAI SMS Complaints</li>
-<li>[ ] 112 - Police Emergency</li></ul>
+                        <p>1. [ ] Login to bank on a separate device</p>
+<p>2. [ ] Do NOT click any links and type in URL</p>
+<p>3. [ ] If you see no unusual activity, change password and reduce limits temporarily</p>
                     </div>
                     
-                    <div class="card-action">
-                        <a href="https://chakshu.trai.gov.in" class="action-button" target="_blank">Visit Sanchar Saathi</a>
-                    </div>
-                
                     
                     <div class="card-checklist">
                         <button class="mark-complete" onclick="markComplete(this)">
@@ -1064,44 +867,51 @@
                 </article>
             
 
-                <article class="card card-reference" data-card-index="51">
+                <article class="card card-action" data-card-index="43">
                     <div class="card-header">
-                        <span class="card-icon">📞</span>
-                        <h2>Where to Report</h2>
+                        <span class="card-icon">⚡</span>
+                        <h2>Call Bank</h2>
                         
                     </div>
                     <div class="card-content">
-                        
-                    <h3>Immediate Fraud (happening NOW)</h3>
-                    <p>📞 <strong>155260 - National Cyber Crime Helpline</strong></p>
-<p>Real-time coordination with banks | Call FIRST</p>
-                
-
-                    <h3>Online Complaint</h3>
-                    <p>🌐 <strong>cybercrime.gov.in</strong></p>
-<p>File detailed complaint | Get reference number | Required for bank investigation</p>
-                
-
-                    <h3>Police FIR</h3>
-                    <p>🚓 <strong>Visit police station</strong></p>
-<p>Bring bank statement + evidence | Get FIR number (needed for insurance/claims)</p>
-                
-
-                    <h3>Verification Resources</h3>
-                    <p>🔍 <strong>Important Links:</strong></p>
-<ul><li><strong>sebi.gov.in</strong> - Verify investments</li>
-<li><strong>cibil.com</strong> - Free annual credit report</li>
-<li><strong>sancharsaathi.gov.in</strong> - Check/block SIMs</li>
-<li><strong>deepware.ai</strong> - Detect video deepfakes</li>
-<li><strong>resemble.ai</strong> - Detect audio deepfakes</li></ul>
-                
+                        <p>1. [ ]  If you see unusual transactions or expect some,  Call your known RM</p>
+<p>2. [ ]  Or call bank using number on your Debit Card</p>
+<p>3. [ ]  Get Account Blocked</p>
                     </div>
                     
                     
+                    <div class="card-checklist">
+                        <button class="mark-complete" onclick="markComplete(this)">
+                            ✓ Mark as Complete
+                        </button>
+                    </div>
+                
                 </article>
             
 
-                <article class="card card-action" data-card-index="52">
+                <article class="card card-action" data-card-index="44">
+                    <div class="card-header">
+                        <span class="card-icon">⚡</span>
+                        <h2>Report to Cyber Crime  on 1930</h2>
+                        
+                    </div>
+                    <div class="card-content">
+                        <p>1. [ ]  Call 1930 or</p>
+<p>2. [ ]  Visit cybercrime.gov.in</p>
+<p>3. [ ]  If amount is large, file FIR at Police Station</p>
+                    </div>
+                    
+                    
+                    <div class="card-checklist">
+                        <button class="mark-complete" onclick="markComplete(this)">
+                            ✓ Mark as Complete
+                        </button>
+                    </div>
+                
+                </article>
+            
+
+                <article class="card card-action" data-card-index="45">
                     <div class="card-header">
                         <span class="card-icon">✅</span>
                         <h2>Your Action Plan</h2>
@@ -1109,41 +919,19 @@
                     </div>
                     <div class="card-content">
                         <p><strong>Must Do:</strong></p>
-<ul><li>[ ] Enable 2FA on ALL financial accounts</li>
-<li>[ ] Change passwords (12+ chars, unique)</li>
-<li>[ ] Save 155260 in contacts</li>
-<li>[ ] Visit sancharsaathi.gov.in (5 min)</li>
+<ul><li>[ ] Change passwords (12+ chars, unique)</li>
+<li>[ ] Enable 2FA on ALL financial accounts</li>
+<li>[ ] Check SIMs - visit sancharsaraathi.gov.in</li>
+<li>[ ] Check transaction limits</li>
+<li>[ ] Explore password manager</li>
 <li>[ ] Establish family codeword</li></ul>
-                    </div>
-                    
-                    
-                    <div class="card-checklist">
-                        <button class="mark-complete" onclick="markComplete(this)">
-                            ✓ Mark as Complete
-                        </button>
-                    </div>
-                
-                </article>
-            
-
-                <article class="card card-action" data-card-index="53">
-                    <div class="card-header">
-                        <span class="card-icon">✅</span>
-                        <h2>THIS WEEK</h2>
-                        
-                    </div>
-                    <div class="card-content">
-                        <p><strong>Important Tasks:</strong></p>
-<ul><li>[ ] Set UPI limit to ₹5-10K</li>
-<li>[ ] Install Bitwarden</li>
-<li>[ ] Check SEBI for investments</li>
-<li>[ ] Review bank statements</li></ul>
-<p>🎯 <strong>ONE THING RIGHT NOW:</strong></p>
-<p><strong>Enable 2FA on your primary bank</strong></p>
-<p>(Prevents 99% of account takeovers)</p>
 <p><strong>DO IT NOW</strong></p>
                     </div>
                     
+                    <div class="card-action">
+                        <a href="#" class="action-button" target="_blank">Do it NOW</a>
+                    </div>
+                
                     
                     <div class="card-checklist">
                         <button class="mark-complete" onclick="markComplete(this)">
@@ -1154,7 +942,7 @@
                 </article>
             
 
-                <article class="card card-reference" data-card-index="54">
+                <article class="card card-reference" data-card-index="46">
                     <div class="card-header">
                         <span class="card-icon">🏆</span>
                         <h2>The 12 Golden Rules</h2>
@@ -1162,20 +950,20 @@
                     </div>
                     <div class="card-content">
                         
-                    <h3>Rules That Prevent 95% of Scams</h3>
+                    <h3>Rules That Prevent 99% of Scams</h3>
                     <p>1. Banks NEVER ask for OTP/password/PIN/CVV</p>
 <p>2. Financial websites end in .bank.in</p>
 <p>3. Bank SMS from 6-char IDs, NOT mobile numbers</p>
 <p>4. Family codeword for all money requests</p>
 <p>5. Enable 2FA everywhere (prevents 99% hacks)</p>
-<p>6. Check SEBI.gov.in before ANY investment</p>
-<p>7. Don't click links in emails/SMS</p>
+<p>6. Don't click links in emails/SMS</p>
+<p>7. REPEAT: Don't click links in emails/SMS</p>
 <p>8. Don't install APK files from WhatsApp</p>
 <p>9. Don't share screen with anyone</p>
 <p>10. Wait 24h before returning "mistaken" UPI payments</p>
 <p>11. Government doesn't arrest via phone/video</p>
 <p>12. When in doubt, STOP and VERIFY</p>
-<p><strong>These 12 rules prevent 95% of scams</strong></p>
+<p><strong>These 12 rules prevent 99% of scams</strong></p>
                 
                     </div>
                     
@@ -1183,34 +971,22 @@
                 </article>
             
 
-                <article class="card card-content" data-card-index="55">
+                <article class="card card-reference" data-card-index="47">
                     <div class="card-header">
-                        <span class="card-icon">❓</span>
-                        <h2>Questions & Discussion</h2>
+                        <span class="card-icon">🏆</span>
+                        <h2>Conclusion</h2>
                         
                     </div>
                     <div class="card-content">
                         
-                    <h3>What We Covered</h3>
-                    <p>✓ Why digital finance is better (with security)</p>
-<p>✓ Password security (2FA, passkeys, Bitwarden)</p>
-<p>✓ All scam types (phishing, WhatsApp, OTP, investment, digital arrest, deepfakes)</p>
-<p>✓ Protection strategies</p>
-<p>✓ Government initiatives</p>
-<p>✓ Reporting & resources</p>
+                    <h3>Digital finance is GREAT when done safely</h3>
+                    <p>You have the knowledge. Use it. Share it. Protect yourself and others.</p>
+<p><strong>Thank you! Stay safe, stay secure, stay smart. 🛡️💰📱</strong></p>
+<p>Authored by <strong>Arun Tanksali + Venkatesh Kasturi</strong></p>
                 
 
-                    <h3>Common Questions</h3>
-                    <p><strong>Q: Safe to use banking apps?</strong></p>
-<p>A: YES. With 2FA + biometric, very safe.</p>
-<p><strong>Q: Can I recover money?</strong></p>
-<p>A: Depends. Card 80%+ (if fast). UPI 20-30% (within 1 hr).</p>
-<p><strong>Q: Friend sent WhatsApp link?</strong></p>
-<p>A: NO. Call them on actual phone first.</p>
-<p><strong>Q: Protect elderly parents?</strong></p>
-<p>A: Low limits, family codeword, call before decisions.</p>
-<p><strong>Q: Is biometric safe?</strong></p>
-<p>A: YES. Can't be phished remotely.</p>
+                    <h3>Rotary Bengaluru Heritage North</h3>
+                    
                 
                     </div>
                     
@@ -1222,7 +998,7 @@
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <button onclick="scrollToTop()" aria-label="Scroll to top">↑ Top</button>
-        <span id="position">1 / 56</span>
+        <span id="position">1 / 48</span>
         <button onclick="shareCard()" aria-label="Share">📤 Share</button>
     </nav>
 
@@ -1244,6 +1020,18 @@
 
                     // Save progress
                     localStorage.setItem('digismart-last-card', index);
+
+                    // Track card view with Google Analytics
+                    const cardTitle = entry.target.querySelector('h2')?.textContent || 'Unknown';
+                    const cardType = entry.target.className.match(/card-(\w+)/)?.[1] || 'content';
+
+                    gtag('event', 'card_view', {
+                        card_title: cardTitle,
+                        card_type: cardType,
+                        card_index: index,
+                        language: 'en',
+                        progress_percent: Math.round(progress)
+                    });
                 }
             });
         }, { threshold: 0.5 });
@@ -1275,6 +1063,13 @@
         });
 
         function switchLanguage(lang) {
+            // Track language switch
+            gtag('event', 'language_switch', {
+                from: 'en',
+                to: lang,
+                version: 'mobile'
+            });
+
             localStorage.setItem('digismart-lang', lang);
             window.location.href = `mobile-${lang}.html`;
         }
@@ -1282,9 +1077,20 @@
         function markComplete(btn) {
             btn.classList.add('completed');
             btn.textContent = '✓ Completed';
+
             // Save to localStorage
             const cardIndex = btn.closest('.card').dataset.cardIndex;
+            const card = btn.closest('.card');
+            const cardTitle = card.querySelector('h2')?.textContent || 'Unknown';
+
             localStorage.setItem(`card-${cardIndex}-complete`, 'true');
+
+            // Track completion
+            gtag('event', 'card_complete', {
+                card_title: cardTitle,
+                card_index: cardIndex,
+                language: 'en'
+            });
 
             // Celebrate with animation
             btn.style.transform = 'scale(1.1)';
@@ -1294,6 +1100,11 @@
         }
 
         function scrollToTop() {
+            // Track scroll to top
+            gtag('event', 'scroll_to_top', {
+                language: 'en'
+            });
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1302,16 +1113,33 @@
             const currentCard = document.querySelector(`[data-card-index="${currentCardIndex}"]`);
             const title = currentCard ? currentCard.querySelector('h2').textContent : 'Digital Financial Security in India';
 
+            // Track share attempt
+            gtag('event', 'share', {
+                card_title: title,
+                card_index: currentCardIndex,
+                language: 'en'
+            });
+
             if (navigator.share) {
                 navigator.share({
                     title: 'Digital Financial Security in India',
                     text: `Check out this digital security tip: ${title}`,
                     url: window.location.href
+                }).then(() => {
+                    // Track successful share
+                    gtag('event', 'share_success', {
+                        card_title: title,
+                        language: 'en'
+                    });
                 }).catch(err => console.log('Share cancelled'));
             } else {
                 // Fallback: copy URL
                 navigator.clipboard.writeText(window.location.href).then(() => {
                     alert('Link copied to clipboard!');
+                    gtag('event', 'share_fallback', {
+                        method: 'clipboard',
+                        language: 'en'
+                    });
                 });
             }
         }

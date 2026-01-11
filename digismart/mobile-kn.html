@@ -7,6 +7,59 @@
     <meta name="mobile-web-app-capable" content="yes">
     <title>ಡಿಜಿಟಲ್ ಹಣಕಾಸು ಸುರಕ್ಷತೆ</title>
     <link rel="stylesheet" href="styles/mobile.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            page_title: 'ಡಿಜಿಟಲ್ ಹಣಕಾಸು ಸುರಕ್ಷತೆ',
+            page_location: window.location.href,
+            language: 'kn',
+            content_group: 'mobile_presentation'
+        });
+    </script>
+
+    <!-- Authentication Check -->
+    <script>
+        (function() {
+            // Check authentication
+            const authData = localStorage.getItem('digismart-auth');
+
+            if (!authData) {
+                // Not authenticated, redirect to login
+                window.location.href = 'login.html';
+                return;
+            }
+
+            try {
+                const parsed = JSON.parse(authData);
+
+                // Check if expired
+                if (parsed.expiresAt < Date.now()) {
+                    // Expired, clear and redirect
+                    localStorage.removeItem('digismart-auth');
+                    window.location.href = 'login.html';
+                    return;
+                }
+
+                // Track returning user
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'authenticated_access', {
+                        user_type: parsed.email ? 'email' : 'phone',
+                        language: 'kn',
+                        version: 'mobile'
+                    });
+                }
+            } catch (e) {
+                // Invalid auth data, redirect to login
+                localStorage.removeItem('digismart-auth');
+                window.location.href = 'login.html';
+            }
+        })();
+    </script>
 </head>
 <body>
     <!-- Fixed Header -->
@@ -953,6 +1006,18 @@
 
                     // Save progress
                     localStorage.setItem('digismart-last-card', index);
+
+                    // Track card view with Google Analytics
+                    const cardTitle = entry.target.querySelector('h2')?.textContent || 'Unknown';
+                    const cardType = entry.target.className.match(/card-(\w+)/)?.[1] || 'content';
+
+                    gtag('event', 'card_view', {
+                        card_title: cardTitle,
+                        card_type: cardType,
+                        card_index: index,
+                        language: 'kn',
+                        progress_percent: Math.round(progress)
+                    });
                 }
             });
         }, { threshold: 0.5 });
@@ -984,6 +1049,13 @@
         });
 
         function switchLanguage(lang) {
+            // Track language switch
+            gtag('event', 'language_switch', {
+                from: 'kn',
+                to: lang,
+                version: 'mobile'
+            });
+
             localStorage.setItem('digismart-lang', lang);
             window.location.href = `mobile-${lang}.html`;
         }
@@ -991,9 +1063,20 @@
         function markComplete(btn) {
             btn.classList.add('completed');
             btn.textContent = '✓ Completed';
+
             // Save to localStorage
             const cardIndex = btn.closest('.card').dataset.cardIndex;
+            const card = btn.closest('.card');
+            const cardTitle = card.querySelector('h2')?.textContent || 'Unknown';
+
             localStorage.setItem(`card-${cardIndex}-complete`, 'true');
+
+            // Track completion
+            gtag('event', 'card_complete', {
+                card_title: cardTitle,
+                card_index: cardIndex,
+                language: 'kn'
+            });
 
             // Celebrate with animation
             btn.style.transform = 'scale(1.1)';
@@ -1003,6 +1086,11 @@
         }
 
         function scrollToTop() {
+            // Track scroll to top
+            gtag('event', 'scroll_to_top', {
+                language: 'kn'
+            });
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1011,16 +1099,33 @@
             const currentCard = document.querySelector(`[data-card-index="${currentCardIndex}"]`);
             const title = currentCard ? currentCard.querySelector('h2').textContent : 'ಡಿಜಿಟಲ್ ಹಣಕಾಸು ಸುರಕ್ಷತೆ';
 
+            // Track share attempt
+            gtag('event', 'share', {
+                card_title: title,
+                card_index: currentCardIndex,
+                language: 'kn'
+            });
+
             if (navigator.share) {
                 navigator.share({
                     title: 'ಡಿಜಿಟಲ್ ಹಣಕಾಸು ಸುರಕ್ಷತೆ',
                     text: `Check out this digital security tip: ${title}`,
                     url: window.location.href
+                }).then(() => {
+                    // Track successful share
+                    gtag('event', 'share_success', {
+                        card_title: title,
+                        language: 'kn'
+                    });
                 }).catch(err => console.log('Share cancelled'));
             } else {
                 // Fallback: copy URL
                 navigator.clipboard.writeText(window.location.href).then(() => {
                     alert('Link copied to clipboard!');
+                    gtag('event', 'share_fallback', {
+                        method: 'clipboard',
+                        language: 'kn'
+                    });
                 });
             }
         }

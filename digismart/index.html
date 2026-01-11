@@ -4,18 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Financial Security</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
-        // Auto-detect device and redirect
-        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-                      || window.innerWidth < 768;
-        const lang = localStorage.getItem('digismart-lang') || 'en';
-        const version = isMobile ? 'mobile' : 'desktop';
-        window.location.href = `${version}-${lang}.html`;
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            page_title: 'Auto Detector',
+            page_location: window.location.href,
+            content_group: 'index_redirect'
+        });
+    </script>
+
+    <script>
+        // Check authentication first
+        const authData = localStorage.getItem('digismart-auth');
+
+        if (!authData) {
+            // Not authenticated, redirect to login
+            gtag('event', 'redirect', {
+                from: 'index',
+                to: 'login',
+                reason: 'not_authenticated'
+            });
+            window.location.href = 'login.html';
+        } else {
+            try {
+                const parsed = JSON.parse(authData);
+
+                // Check if expired
+                if (parsed.expiresAt < Date.now()) {
+                    // Expired, clear and redirect to login
+                    localStorage.removeItem('digismart-auth');
+                    gtag('event', 'redirect', {
+                        from: 'index',
+                        to: 'login',
+                        reason: 'expired'
+                    });
+                    window.location.href = 'login.html';
+                } else {
+                    // Authenticated, auto-detect device and redirect
+                    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+                                  || window.innerWidth < 768;
+                    const lang = localStorage.getItem('digismart-lang') || 'en';
+                    const version = isMobile ? 'mobile' : 'desktop';
+
+                    // Track redirect
+                    gtag('event', 'redirect', {
+                        from: 'index',
+                        to: `${version}-${lang}`,
+                        device_type: isMobile ? 'mobile' : 'desktop',
+                        language: lang,
+                        user_type: parsed.email ? 'email' : 'phone'
+                    });
+
+                    window.location.href = `${version}-${lang}.html`;
+                }
+            } catch (e) {
+                // Invalid auth data, redirect to login
+                localStorage.removeItem('digismart-auth');
+                gtag('event', 'redirect', {
+                    from: 'index',
+                    to: 'login',
+                    reason: 'invalid_auth'
+                });
+                window.location.href = 'login.html';
+            }
+        }
     </script>
 </head>
 <body>
     <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif;">
-        <p>Redirecting to appropriate version...</p>
+        <p>Redirecting...</p>
     </div>
 </body>
 </html>

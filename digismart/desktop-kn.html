@@ -7,6 +7,59 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
 		<link rel="stylesheet" href="styles/desktop.css">
+
+		<!-- Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'GA_MEASUREMENT_ID', {
+				page_title: '{{title}}',
+				page_location: window.location.href,
+				language: '{{language}}',
+				content_group: 'desktop_presentation'
+			});
+		</script>
+
+		<!-- Authentication Check -->
+		<script>
+			(function() {
+				// Check authentication
+				const authData = localStorage.getItem('digismart-auth');
+
+				if (!authData) {
+					// Not authenticated, redirect to login
+					window.location.href = 'login.html';
+					return;
+				}
+
+				try {
+					const parsed = JSON.parse(authData);
+
+					// Check if expired
+					if (parsed.expiresAt < Date.now()) {
+						// Expired, clear and redirect
+						localStorage.removeItem('digismart-auth');
+						window.location.href = 'login.html';
+						return;
+					}
+
+					// Track returning user
+					if (typeof gtag !== 'undefined') {
+						gtag('event', 'authenticated_access', {
+							user_type: parsed.email ? 'email' : 'phone',
+							language: '{{language}}',
+							version: 'desktop'
+						});
+					}
+				} catch (e) {
+					// Invalid auth data, redirect to login
+					localStorage.removeItem('digismart-auth');
+					window.location.href = 'login.html';
+				}
+			})();
+		</script>
 	</head>
 	<body>
 		<div class="reveal">
@@ -629,7 +682,35 @@
 				plugins: [ RevealNotes ]
 			});
 
+			// Track slide changes with Google Analytics
+			Reveal.on('slidechanged', event => {
+				const slideTitle = event.currentSlide.querySelector('h2')?.textContent || 'Unknown';
+				const slideType = event.currentSlide.dataset.slideType || 'content';
+
+				gtag('event', 'slide_change', {
+					slide_title: slideTitle,
+					slide_type: slideType,
+					slide_index: event.indexh,
+					language: '{{language}}'
+				});
+			});
+
+			// Track when presentation is ready
+			Reveal.on('ready', event => {
+				gtag('event', 'presentation_ready', {
+					total_slides: Reveal.getTotalSlides(),
+					language: '{{language}}'
+				});
+			});
+
 			function switchLanguage(lang) {
+				// Track language switch
+				gtag('event', 'language_switch', {
+					from: '{{language}}',
+					to: lang,
+					version: 'desktop'
+				});
+
 				localStorage.setItem('digismart-lang', lang);
 				window.location.href = `desktop-${lang}.html`;
 			}
